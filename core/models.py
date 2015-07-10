@@ -25,6 +25,14 @@ class Organizer(models.Model):
     organizer_share_mail  = models.BooleanField(default=False)
     organizer_share_phone = models.BooleanField(default=False)
 
+    def __str__(self):
+        """
+        Display for Python2
+        :return: Unicode string
+        """
+        return "{0} - {1} {2} ({3}) - {4}".format(self.organizer_login, self.organizer_first_name,
+                                                   self.organizer_last_name, self.organizer_mail, self.organizer_club)
+
     def get_entire_name(self):
         return "{0} {1}".format(self.organizer_first_name, self.organizer_last_name)
 
@@ -106,6 +114,9 @@ class Event(models.Model):
     description    = models.TextField(blank=False)
     website        = models.URLField(max_length=100, blank=True)
 
+    def __str__(self):
+        return u"{0}".format(self.name)
+
     def get_details(self):
         """
         :return: A dictionary that contains all details of the event
@@ -186,6 +197,9 @@ class Tournament(models.Model):
     national           = models.BooleanField(default=False)
     professional       = models.BooleanField(default=False)
     kids               = models.BooleanField(default=False)
+
+    def __str__(self):
+        return u"{0} / {1} / {2} / {3}".format(self.event.name, self.date, self.nb_players, self.sx_players)
 
     def date_in_past(self):
         """

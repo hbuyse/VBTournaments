@@ -17,7 +17,7 @@ class OrganizerAdmin(admin.ModelAdmin):
 
 class TournamentAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['date']}),
+        (None, {'fields': ['event', 'date']}),
         ('Format', {'fields': ['nb_players', 'sx_players']}),
         ('Level', {'fields': ['hobby', 'departmental', 'regional', 'national', 'professional', 'kids']})
     ]
