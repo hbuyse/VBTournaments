@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    {# Load the static files library #}
+    {% load staticfiles %}
+
+    {# Load the tag library #}
+    {% load bootstrap3 %}
+
+    {# Load CSS and JavaScript #}
+    {% bootstrap_javascript jquery=1 %}
+    {# {% bootstrap_css %} #}
+    <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+
+    {# Font Awesome : for icons #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+    {# Personal CSS stylesheet #}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+
+    <title>VBTournaments</title>
+</head>
+<body>
+
+    {# Add the bootstrapped navbar #}
+    {% include "navbar.html" %}
+
+    {# Beginning of all other pages #}
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+
+        {% comment %}
+        <div id="list_event" style="position:absolute;right:0;top:62px">
+            <h6>Tournois</h6>
+            {% if event_list %}
+            <ul>
+            {% for event in event_list %}
+                <li><a href="{% url 'core:event_page' event.id %}">{{ event.name }}</a></li>
+            {% endfor %}
+            </ul>
+            {% else %}
+            <p>No events are available.</p>
+            {% endif %}.
+        </div>
+        {% endcomment %}
+    </div>
+</body>
+</html>
