@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bs-component">
+    <ul class="breadcrumb">
+        <li><a href="{% url 'core:home' %}">Home</a></li>
+        <li class="active">Tournois</li>
+    </ul>
+</div>
+
+<div class="bs-component">
+
+    <div class="page-header">
+        <h1>Liste des tournois</h1>
+    </div>
+
+    {% if events_list %}
+        {% for e in events_list %}
+        <div class="row">
+        <div class="col-md-11">
+            <div class="bs-component">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ e.get_details.name }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{ e.get_address.for_html|linebreaksbr }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-1">
+            <div class="bs-component">
+                <a href="#" class="btn btn-primary">Inscription</a>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+</div>
+
+{% endblock %}

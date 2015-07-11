@@ -35,22 +35,9 @@
 
     {# Beginning of all other pages #}
     <div class="container-fluid">
+
         {% block content %}{% endblock %}
 
-        {% comment %}
-        <div id="list_event" style="position:absolute;right:0;top:62px">
-            <h6>Tournois</h6>
-            {% if event_list %}
-            <ul>
-            {% for event in event_list %}
-                <li><a href="{% url 'core:event_page' event.id %}">{{ event.name }}</a></li>
-            {% endfor %}
-            </ul>
-            {% else %}
-            <p>No events are available.</p>
-            {% endif %}.
-        </div>
-        {% endcomment %}
     </div>
 </body>
 </html>

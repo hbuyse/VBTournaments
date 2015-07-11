@@ -20,5 +20,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^tournaments/', views.EventsList.as_view(), name='tournaments_list')
     # url(r'^(?P<event_id>[0-9]+)/$', views.detail, name='detail')
 ]
