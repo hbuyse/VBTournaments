@@ -10,10 +10,16 @@ def home(request):
     return render(request, 'core/home.html')
 
 
-class EventsList(generic.ListView):
+class EventsListView(generic.ListView):
     template_name = 'core/events_list.html'
     context_object_name = 'events_list'
 
     def get_queryset(self):
         """Return all events."""
         return Event.objects.all()
+
+
+class EventDetailView(generic.DetailView):
+    model = Event
+    template_name = 'core/event_detail.html'
+    context_object_name = 'event'

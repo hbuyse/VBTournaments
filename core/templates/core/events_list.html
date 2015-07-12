@@ -17,10 +17,18 @@
     {% if events_list %}
         {% for e in events_list %}
             <div class="bs-component">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary tournament">
                     <div class="panel-heading">
-                        <a href="#" class="btn btn-default btn-xs pull-right">Inscription</a>
-                        <h3 class="panel-title" style="line-height:25.5px;">{{ e.get_city }} ({{ e.get_zip_code }} - {{ e.get_country_iso }})</h3>
+                        <div class="btn-group pull-right">
+                            <a href="{% url 'core:event_detail' e.id %}" class="btn btn-default btn-xs">Details</a>
+                            {# <a href="{% url 'core:inscription_form' e.id %}" class="btn btn-default btn-xs">Inscription</a> #}
+                            {% if e.get_full %}
+                                <a href="#" class="btn btn-danger btn-xs disabled">Inscription</a>
+                            {% else %}
+                                <a href="#" class="btn btn-info btn-xs">Inscription</a>
+                            {% endif %}
+                        </div>
+                        <h3 class="btn-block panel-title" style="line-height:25.5px;">{{ e.get_city }} ({{ e.get_zip_code }} - {{ e.get_country_iso }})</h3>
                     </div>
                     <div class="panel-body">
                     {% for t in e.get_all_tournaments_related %}
@@ -35,7 +43,6 @@
             <p>Pas de tournoi disponible... Désolé :-(</p>
         </div>
     {% endif %}
-
 </div>
 
 {% endblock %}

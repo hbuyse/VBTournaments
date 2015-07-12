@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bs-component">
+    <ul class="breadcrumb">
+        <li><a href="{% url 'core:home' %}">Home</a></li>
+        <li><a href="{% url 'core:events_list' %}">Tournois</a></li>
+        <li class="active">{{ object.name }}</li>
+    </ul>
+</div>
+
+<div class="bs-docs-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <a href="#" class="btn btn-default pull-right">Inscription d'une équipe</a>
+                <h1 id="type">{{ object.name }}</h1>
+                <h4>{{ object.get_surface }}</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Headings -->
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="bs-component">
+                <h2>Détails</h2>
+                <p>Organisateur: {{ object.get_organizer.get_entire_name }}</p>
+                <p>Club: {{ object.get_organizer.get_club }}</p>
+                <p>Gymnases : {{ object.get_nb_gymnasiums }}</p>
+                <p>Terrains: {{ object.get_nb_terrains }}</p>
+                <p>Équipes: {{ object.get_nb_teams }}</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="bs-component">
+                <h2>Adresse</h2>
+                <p>{{ object.get_name_gymnasium }}</p>
+                <p>{{ object.get_nb_in_street }}, {{ object.get_street }}</p>
+                <p>{{ object.get_zip_code }} {{ object.get_city }}</p>
+                <p>{{ object.get_region }}</p>
+                <p>{{ object.get_country }}</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="bs-component">
+                <h2>Date</h2>
+                <div class="list-group">
+                {% for d in object.get_all_tournaments_related %}
+                    <div class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ d.get_date }}</h4>
+                        <p class="list-group-item-text">{{ d.get_nb_players }} {{ d.get_sx_players }}</p>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

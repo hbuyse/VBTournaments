@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from . import views
+from . import views, forms
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-    url(r'^tournaments/', views.EventsList.as_view(), name='tournaments_list')
-    # url(r'^(?P<event_id>[0-9]+)/$', views.detail, name='detail')
+    url(r'^tournaments/$', views.EventsListView.as_view(), name='events_list'),
+    url(r'^tournaments/(?P<pk>[0-9]+)/$', views.EventDetailView.as_view(), name='event_detail'),
+    # url(r'^tournaments/(?P<pk>[0-9]+)/inscription$', forms.InscriptionForm, name='inscription_form')
 ]

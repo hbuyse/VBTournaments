@@ -10,19 +10,20 @@ logging.basicConfig()
 logger = logging.getLogger()
 
 
-
 """Organizer : person that create a tournament
 
 To one organizer corresponds MULTIPLE events
 """
+
+
 class Organizer(models.Model):
-    organizer_login       = models.CharField(max_length=30)
-    organizer_first_name  = models.CharField(max_length=50)
-    organizer_last_name   = models.CharField(max_length=50)
-    organizer_club        = models.CharField(max_length=100, blank=True)
-    organizer_mail        = models.EmailField(max_length=254)
+    organizer_login = models.CharField(max_length=30)
+    organizer_first_name = models.CharField(max_length=50)
+    organizer_last_name = models.CharField(max_length=50)
+    organizer_club = models.CharField(max_length=100, blank=True)
+    organizer_mail = models.EmailField(max_length=254)
     # organizer_phone       =
-    organizer_share_mail  = models.BooleanField(default=False)
+    organizer_share_mail = models.BooleanField(default=False)
     organizer_share_phone = models.BooleanField(default=False)
 
     def __str__(self):
@@ -31,7 +32,7 @@ class Organizer(models.Model):
         :return: Unicode string
         """
         return "{0} - {1} {2} ({3}) - {4}".format(self.organizer_login, self.organizer_first_name,
-                                                   self.organizer_last_name, self.organizer_mail, self.organizer_club)
+                                                  self.organizer_last_name, self.organizer_mail, self.organizer_club)
 
     def get_entire_name(self):
         return "{0} {1}".format(self.organizer_first_name, self.organizer_last_name)
@@ -44,13 +45,13 @@ class Organizer(models.Model):
         :return: A dictionary about all the details of the organizer
         """
         return {
-            "login"       : self.organizer_login,
-            "first_name"  : self.organizer_first_name,
-            "last_name"   : self.organizer_last_name,
-            "club"        : self.organizer_club,
-            "mail"        : self.organizer_mail,
-            "share_mail"  : self.organizer_share_mail,
-            "share_phone" : self.organizer_share_phone,
+            "login": self.organizer_login,
+            "first_name": self.organizer_first_name,
+            "last_name": self.organizer_last_name,
+            "club": self.organizer_club,
+            "mail": self.organizer_mail,
+            "share_mail": self.organizer_share_mail,
+            "share_phone": self.organizer_share_phone,
         }
 
     def get_number_events_organized(self):
@@ -62,8 +63,8 @@ class Organizer(models.Model):
             nb_tournaments += event.tournaments.count()
 
         return {
-            "events"      : self.events.count(),
-            "tournaments" : nb_tournaments,
+            "events": self.events.count(),
+            "tournaments": nb_tournaments,
         }
 
     def login_existing(self):
@@ -84,59 +85,51 @@ class Organizer(models.Model):
             raise models.ValidationError("This email address is already used by someone.")
 
 
-
-
 """Event : details of the tournament(s)
 
 To one event corresponds MULTIPLE tournaments
 """
+
+
 class Event(models.Model):
-    organizer      = models.ForeignKey(Organizer, related_name='events')
-    name           = models.CharField(max_length=100)
+    organizer = models.ForeignKey(Organizer, related_name='events')
+    name = models.CharField(max_length=100)
 
-    nb_terrains    = models.PositiveSmallIntegerField()
-    nb_gymnasiums  = models.PositiveSmallIntegerField()
-    nb_teams       = models.PositiveSmallIntegerField()
+    nb_terrains = models.PositiveSmallIntegerField()
+    nb_gymnasiums = models.PositiveSmallIntegerField()
+    nb_teams = models.PositiveSmallIntegerField()
 
-    night          = models.BooleanField(default=False)
-    surface        = models.CharField(max_length=30)
+    night = models.BooleanField(default=False)
+    surface = models.CharField(max_length=30,
+                               choices=[
+                                   ('beach', 'Beach'),
+                                   ('grass', 'Grass'),
+                                   ('indoor', 'Indoor')
+                               ])
 
     name_gymnasium = models.CharField(max_length=255, blank=True)
-    nb_in_street   = models.PositiveSmallIntegerField(blank=True)
-    street         = models.CharField(max_length=255)
-    city           = models.CharField(max_length=255)
-    zip_code       = models.CharField(max_length=16)
-    region         = models.CharField(max_length=100, blank=True)
-    country        = models.CharField(max_length=50)
+    nb_in_street = models.PositiveSmallIntegerField(blank=True)
+    street = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    zip_code = models.CharField(max_length=16)
+    region = models.CharField(max_length=100, blank=True)
+    country = models.CharField(max_length=50)
 
     # poster         = models.ImageField()
     # inscription    = models.FileField()
-    description    = models.TextField(blank=False)
-    website        = models.URLField(max_length=100, blank=True)
+    description = models.TextField(blank=False)
+    website = models.URLField(max_length=100, blank=True)
+
+    full = models.BooleanField(default=False)
 
     def __str__(self):
         return u"{0}".format(self.name)
-
-    def get_details(self):
-        """
-        :return: A dictionary that contains all details of the event
-        """
-        dictionary = {
-            "organizer": self.organizer.get_details(),
-            "name": self.name,
-            "nb_terrains": self.nb_terrains,
-            "nb_gymnasiums": self.nb_gymnasiums,
-            "nb_teams": self.nb_teams,
-            "website": self.website,
-            "description": self.description,
-        }
-        return dictionary
 
     def get_all_tournaments_related(self):
         """
         :return: A list of all the tournaments that are related to the event
         """
-        return self.tournaments.all()
+        return self.tournaments.order_by('date').all()
 
     def get_organizer_name(self):
         """
@@ -191,8 +184,11 @@ class Event(models.Model):
     def get_night(self):
         return self.night
 
-    def get_surfacename_gymnasium(self):
-        return self.surfacename_gymnasium
+    def get_surface(self):
+        return self.surface
+
+    def get_name_gymnasium(self):
+        return self.name_gymnasium
 
     def get_nb_in_street(self):
         return self.nb_in_street
@@ -221,7 +217,8 @@ class Event(models.Model):
     def get_website(self):
         return self.website
 
-
+    def get_full(self):
+        return self.full
 
 
 """Create a Tournament
@@ -229,21 +226,23 @@ class Event(models.Model):
 It could have multiple formats of tournaments during the same day.
 One tournament is at ONE place and belongs to ONE organizer
 """
+
+
 class Tournament(models.Model):
-    event              = models.ForeignKey(Event, related_name='tournaments')
+    event = models.ForeignKey(Event, related_name='tournaments')
 
-    date               = models.DateField(auto_now=False)
+    date = models.DateField(auto_now=False)
 
-    nb_players         = models.CharField(max_length=3)
-    sx_players         = models.CharField(max_length=8)
+    nb_players = models.CharField(max_length=3)
+    sx_players = models.CharField(max_length=8)
 
     # Different levels
-    hobby              = models.BooleanField(default=False)
-    departmental       = models.BooleanField(default=False)
-    regional           = models.BooleanField(default=False)
-    national           = models.BooleanField(default=False)
-    professional       = models.BooleanField(default=False)
-    kids               = models.BooleanField(default=False)
+    hobby = models.BooleanField(default=False)
+    departmental = models.BooleanField(default=False)
+    regional = models.BooleanField(default=False)
+    national = models.BooleanField(default=False)
+    professional = models.BooleanField(default=False)
+    kids = models.BooleanField(default=False)
 
     def __str__(self):
         return u"{0} | {1} | {2} | {3}".format(self.event.name, self.date, self.nb_players, self.sx_players)
@@ -303,3 +302,26 @@ class Tournament(models.Model):
 
     def get_kids(self):
         return self.kids
+
+    def get_list_levels(self):
+        l = list()
+
+        if self.hobby:
+            l.append("Loisirs")
+
+        if self.departmental:
+            l.append("Départemental")
+
+        if self.regional:
+            l.append("Régional")
+
+        if self.national:
+            l.append("National")
+
+        if self.professional:
+            l.append("Professionel")
+
+        if self.kids:
+            l.append("Enfant")
+
+        return l
