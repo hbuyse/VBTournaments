@@ -41,7 +41,7 @@ class TournamentAdmin(admin.ModelAdmin):
 
 class EventAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['name', 'organizer']}),
+        (None, {'fields': ['name', 'full', 'organizer', 'night', 'surface']}),
         ('Informations', {'fields': ['nb_terrains', 'nb_gymnasiums', 'nb_teams', 'website', 'description']}),
         ('Address', {'fields': ['name_gymnasium', 'nb_in_street', 'street', 'zip_code', 'city', 'region', 'country']}),
     ]
