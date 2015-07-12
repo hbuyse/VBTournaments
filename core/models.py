@@ -105,7 +105,7 @@ class Event(models.Model):
     nb_in_street   = models.PositiveSmallIntegerField(blank=True)
     street         = models.CharField(max_length=255)
     city           = models.CharField(max_length=255)
-    zip_code       = models.PositiveIntegerField()
+    zip_code       = models.CharField(max_length=16)
     region         = models.CharField(max_length=100, blank=True)
     country        = models.CharField(max_length=50)
 
