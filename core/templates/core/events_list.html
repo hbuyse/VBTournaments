@@ -16,26 +16,24 @@
 
     {% if events_list %}
         {% for e in events_list %}
-        <div class="row">
-        <div class="col-md-11">
             <div class="bs-component">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ e.get_details.name }}</h3>
+                        <a href="#" class="btn btn-default btn-xs pull-right">Inscription</a>
+                        <h3 class="panel-title" style="line-height:25.5px;">{{ e.get_city }} ({{ e.get_zip_code }} - {{ e.get_country_iso }})</h3>
                     </div>
                     <div class="panel-body">
-                        {{ e.get_address.for_html|linebreaksbr }}
+                    {% for t in e.get_all_tournaments_related %}
+                        {{ t.get_nb_players }} {{ t.get_sx_players }}
+                    {% endfor %}
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-6 col-md-1">
-            <div class="bs-component">
-                <a href="#" class="btn btn-primary">Inscription</a>
-            </div>
-        </div>
-        </div>
         {% endfor %}
+    {% else %}
+        <div class="bs-component">
+            <p>Pas de tournoi disponible... Désolé :-(</p>
+        </div>
     {% endif %}
 
 </div>
