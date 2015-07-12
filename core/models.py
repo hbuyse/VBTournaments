@@ -171,8 +171,55 @@ class Event(models.Model):
         """
         :return: a list of all the tournaments
         """
-        all_events = Event.objects.all()
-        return all_events
+        return Event.objects.all()
+
+    def get_organizer(self):
+        return self.organizer
+
+    def get_name(self):
+        return self.name
+
+    def get_nb_terrains(self):
+        return self.nb_terrains
+
+    def get_nb_gymnasiums(self):
+        return self.nb_gymnasiums
+
+    def get_nb_teams(self):
+        return self.nb_teams
+
+    def get_night(self):
+        return self.night
+
+    def get_surfacename_gymnasium(self):
+        return self.surfacename_gymnasium
+
+    def get_nb_in_street(self):
+        return self.nb_in_street
+
+    def get_street(self):
+        return self.street
+
+    def get_city(self):
+        return self.city
+
+    def get_zip_code(self):
+        return self.zip_code
+
+    def get_region(self):
+        return self.region
+
+    def get_country(self):
+        return self.country
+
+    def get_country_iso(self):
+        return self.country[:2].upper()
+
+    def get_description(self):
+        return self.description
+
+    def get_website(self):
+        return self.website
 
 
 
@@ -199,7 +246,7 @@ class Tournament(models.Model):
     kids               = models.BooleanField(default=False)
 
     def __str__(self):
-        return u"{0} / {1} / {2} / {3}".format(self.event.name, self.date, self.nb_players, self.sx_players)
+        return u"{0} | {1} | {2} | {3}".format(self.event.name, self.date, self.nb_players, self.sx_players)
 
     def date_in_past(self):
         """
@@ -218,9 +265,6 @@ class Tournament(models.Model):
     def get_event_name(self):
         return self.event.get_details()['name']
 
-    def get_event(self):
-        return self.event
-
     def get_event_id(self):
         return self.event.id
 
@@ -229,3 +273,33 @@ class Tournament(models.Model):
 
     def get_month(self):
         return self.date.strftime("%b")
+
+    def get_event(self):
+        return self.event
+
+    def get_date(self):
+        return self.date
+
+    def get_nb_players(self):
+        return self.nb_players
+
+    def get_sx_players(self):
+        return self.sx_players
+
+    def get_hobby(self):
+        return self.hobby
+
+    def get_departmental(self):
+        return self.departmental
+
+    def get_regional(self):
+        return self.regional
+
+    def get_national(self):
+        return self.national
+
+    def get_professional(self):
+        return self.professional
+
+    def get_kids(self):
+        return self.kids
