@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 
-from .models import Tournament, Event, Organizer
+from .models import Tournament, Event, UserProfile
 
 # Create your views here.
 def home(request):
