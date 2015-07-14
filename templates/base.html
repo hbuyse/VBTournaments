@@ -32,7 +32,7 @@
 <body>
 
     {# Add the bootstrapped navbar #}
-    {% include "navbar.html" %}
+    {% include "navbar_header.html" %}
 
     {# Beginning of all other pages #}
     <div class="container-fluid">
@@ -40,5 +40,9 @@
         {% block content %}{% endblock %}
 
     </div>
+
+    {# Add the bootstrapped navbar footer #}
+    {# {% include "navbar_footer.html" %} #}
+
 </body>
 </html>

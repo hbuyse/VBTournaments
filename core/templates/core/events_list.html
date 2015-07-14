@@ -3,7 +3,7 @@
 {% block content %}
 <div class="bs-component">
     <ul class="breadcrumb">
-        <li><a href="{% url 'core:home' %}">Home</a></li>
+        <li><a href="{% url 'core:home' %}">Accueil</a></li>
         <li class="active">Tournois</li>
     </ul>
 </div>
@@ -31,9 +31,19 @@
                         <h3 class="btn-block panel-title" style="line-height:25.5px;">{{ e.get_city }} ({{ e.get_zip_code }} - {{ e.get_country_iso }})</h3>
                     </div>
                     <div class="panel-body">
+
                     {% for t in e.get_all_tournaments_related %}
-                        {{ t.get_nb_players }} {{ t.get_sx_players }}
+                        {{ t.get_nb_players }}x{{ t.get_nb_players }}
+
+                        {% if t.get_sx_players == "female" %}
+                            Féminin
+                        {% elif t.get_sx_players == "male" %}
+                            Masculin
+                        {% elif t.get_sx_players == "mixed" %}
+                            Mixte
+                        {% endif %}
                     {% endfor %}
+
                     </div>
                 </div>
             </div>

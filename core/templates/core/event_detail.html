@@ -4,7 +4,7 @@
 
 <div class="bs-component">
     <ul class="breadcrumb">
-        <li><a href="{% url 'core:home' %}">Home</a></li>
+        <li><a href="{% url 'core:home' %}">Accueil</a></li>
         <li><a href="{% url 'core:events_list' %}">Tournois</a></li>
         <li class="active">{{ object.name }}</li>
     </ul>
@@ -14,9 +14,23 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header">
-                <a href="#" class="btn btn-default pull-right">Inscription d'une équipe</a>
+                <div class="btn-group pull-right">
+                    <a href="#" class="btn btn-default">Recherche équipe</a>
+                    <a href="#" class="btn btn-default">Recherche joueur</a>
+                    {% if object.get_full %}
+                        <a href="#" class="btn btn-danger disabled">Inscription</a>
+                    {% else %}
+                        <a href="#" class="btn btn-info">Inscription</a>
+                    {% endif %}
+                </div>
                 <h1 id="type">{{ object.name }}</h1>
-                <h4>{{ object.get_surface }}</h4>
+                {% if object.get_surface == "grass" %}
+                    <h4>Tournoi se déroulant sur de l'herbe.</h4>
+                {% elif object.get_surface == "beach" %}
+                    <h4>Tournoi se déroulant sur du sable.</h4>
+                {% elif object.get_surface == "indoor" %}
+                    <h4>Tournoi se déroulant à l'intérieur.</h4>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -27,11 +41,11 @@
         <div class="col-lg-4">
             <div class="bs-component">
                 <h2>Détails</h2>
-                <p>Organisateur: {{ object.get_organizer.get_entire_name }}</p>
-                <p>Club: {{ object.get_organizer.get_club }}</p>
-                <p>Gymnases : {{ object.get_nb_gymnasiums }}</p>
-                <p>Terrains: {{ object.get_nb_terrains }}</p>
-                <p>Équipes: {{ object.get_nb_teams }}</p>
+                <p><strong>Organisateur:</strong> {{ object.get_userprofile.get_full_name }}</p>
+                <p><strong>Club:</strong> {{ object.get_userprofile.get_club }}</p>
+                <p><strong>Gymnases:</strong> {{ object.get_nb_gymnasiums }}</p>
+                <p><strong>Terrains:</strong> {{ object.get_nb_terrains }}</p>
+                <p><strong>Équipes:</strong> {{ object.get_nb_teams }}</p>
             </div>
         </div>
         <div class="col-lg-4">
@@ -51,7 +65,17 @@
                 {% for d in object.get_all_tournaments_related %}
                     <div class="list-group-item">
                         <h4 class="list-group-item-heading">{{ d.get_date }}</h4>
-                        <p class="list-group-item-text">{{ d.get_nb_players }} {{ d.get_sx_players }}</p>
+                        <p class="list-group-item-text">
+                            {{ d.get_nb_players }}x{{ d.get_nb_players }}
+
+                            {% if d.get_sx_players == "female" %}
+                                Féminin
+                            {% elif d.get_sx_players == "male" %}
+                                Masculin
+                            {% elif d.get_sx_players == "mixed" %}
+                                Mixte
+                            {% endif %}
+                        </p>
                     </div>
                 {% endfor %}
                 </div>

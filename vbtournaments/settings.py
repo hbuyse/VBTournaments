@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'easy_maps',
     'bootstrap3',
-    'crispy_forms',
+    'bootstrapform',
     'core',
 )
 
