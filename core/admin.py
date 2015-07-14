@@ -1,16 +1,16 @@
 from django.contrib import admin
-from core.models import Organizer, Event, Tournament
+from core.models import UserProfile, Event, Tournament
 
 
 
 
-class OrganizerAdmin(admin.ModelAdmin):
+class UserProfileAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['organizer_login']}),
-        ('Informations', {'fields': ['organizer_first_name', 'organizer_last_name', 'organizer_mail', 'organizer_club']}),
+        ('User', {'fields': ['user']}),
+        ('Other informations', {'fields': ['club', 'phone']}),
     ]
-    list_display = ('organizer_login', 'organizer_first_name', 'organizer_last_name', 'organizer_mail', 'organizer_club')
-    search_fields = ['organizer_login', 'organizer_first_name', 'organizer_last_name']
+    list_display = ('get_username', 'get_email', 'club')
+    search_fields = ['user.username', 'user.first_name', 'user.last_name']
 
 
 
@@ -21,43 +21,43 @@ class TournamentAdmin(admin.ModelAdmin):
         ('Format', {'fields': ['nb_players', 'sx_players']}),
         ('Level', {'fields': ['hobby', 'departmental', 'regional', 'national', 'professional', 'kids']})
     ]
-    list_display = ('event', 'date', 'get_organizer_login', 'get_organizer_club', 'nb_players', 'sx_players')
+    list_display = ('event', 'date', 'get_userprofile_username', 'get_userprofile_club', 'nb_players', 'sx_players')
     list_filter = ['date']
 
     def get_event_name(self, obj):
         """Get the name of the tournaments"""
         return obj.event.name
 
-    def get_organizer_login(self, obj):
-        """Get the login of the person who has registered the tournament"""
-        return obj.event.organizer.organizer_login
+    def get_userprofile_username(self, obj):
+        """Get the login of the person who has registered the event"""
+        return obj.event.userprofile.get_username()
 
-    def get_organizer_club(self, obj):
-        """Get the name of the club who has registered the tournament"""
-        return obj.event.organizer.organizer_club
+    def get_userprofile_club(self, obj):
+        """Get the name of the club who has registered the event"""
+        return obj.event.userprofile.club
 
 
 
 
 class EventAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['name', 'full', 'organizer', 'night', 'surface']}),
+        (None, {'fields': ['name', 'full', 'userprofile', 'night', 'surface']}),
         ('Informations', {'fields': ['nb_terrains', 'nb_gymnasiums', 'nb_teams', 'website', 'description']}),
         ('Address', {'fields': ['name_gymnasium', 'nb_in_street', 'street', 'zip_code', 'city', 'region', 'country']}),
     ]
-    list_display = ('name', 'get_organizer_login', 'nb_teams', 'nb_terrains')
+    list_display = ('name', 'get_userprofile_username', 'nb_teams', 'nb_terrains')
 
-    def get_organizer_login(self, obj):
+    def get_userprofile_username(self, obj):
         """Get the login of the person who has registered the event"""
-        return obj.organizer.organizer_login
+        return obj.userprofile.get_username()
 
-    def get_organizer_club(self, obj):
+    def get_userprofile_club(self, obj):
         """Get the name of the club who has registered the event"""
-        return obj.organizer.organizer_club
+        return obj.userprofile.club
 
 
 
 
-admin.site.register(Organizer, OrganizerAdmin)
+admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Tournament, TournamentAdmin)
