@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load bootstrap %}
+
+<div class="bs-component">
+    <ul class="breadcrumb">
+        <li><a href="{% url 'core:home' %}">Accueil</a></li>
+        <li><a href="{% url 'core:events_list' %}">Tournois</a></li>
+        <li class="active">Création d'un tournoi (1/2)</li>
+    </ul>
+</div>
+
+<div class="col-lg-12">
+    <div class="page-header">
+        <h1 id="type">Création d'un tournoi (1/2)</h1>
+    </div>
+</div>
+
+<div class="bs-component">
+    <form class='horizontal' action="{% url 'core:event_form' %}" method="post">
+        {% csrf_token %}
+
+        {# Tournament name #}
+        <div class="form-group col-md-12" style="margin-bottom:2em;">
+            {{ form.name|bootstrap }}
+        </div>
+
+        {# Tournament caracteristics  #}
+        <div class="col-md-4">
+            <legend>Caractéristiques du tournoi</legend>
+
+            {# Night tournaments #}
+            <div class="form-group">
+                {{ form.night|bootstrap }}
+            </div>
+
+            {# Surface (radio buttons) #}
+            <div class="form-group">
+                {{ form.surface|bootstrap }}
+            </div>
+
+            {# Number of gymnasiums #}
+            <div class="form-group">
+                {{ form.nb_gymnasiums|bootstrap }}
+            </div>
+
+            {# Number of terrains #}
+            <div class="form-group">
+                {{ form.nb_terrains|bootstrap }}
+            </div>
+
+            {# Number of teams #}
+            <div class="form-group">
+                {{ form.nb_teams|bootstrap }}
+            </div>
+        </div>
+
+        {# Event's address #}
+        <div class="col-md-4">
+            <legend>Adresse du tournoi</legend>
+
+            {# Gymnasium's name #}
+            <div class="form-group">
+                {{ form.name_gymnasium|bootstrap }}
+            </div>
+
+            {# Street's number #}
+            <div class="form-group">
+                {{ form.nb_in_street|bootstrap }}
+            </div>
+
+            {# Street name #}
+            <div class="form-group">
+                {{ form.street|bootstrap }}
+            </div>
+
+            {# City name #}
+            <div class="form-group">
+                {{ form.city|bootstrap }}
+            </div>
+
+            {# Country name #}
+            <div class="form-group">
+                {{ form.country|bootstrap }}
+            </div>
+        </div>
+
+        {# Other informations #}
+        <div class="col-md-4">
+            <legend>Autres informations</legend>
+            {# Description #}
+            <div class="form-group">
+                {{ form.description|bootstrap }}
+            </div>
+
+            {# Website #}
+            <div class="form-group">
+                {{ form.website|bootstrap }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 col-md-offset-5">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+        </fieldset>
+    </form>
+</div>
+
+{% endblock %}
