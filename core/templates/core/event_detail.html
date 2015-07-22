@@ -41,8 +41,8 @@
         <div class="col-lg-4">
             <div class="bs-component">
                 <h2>Détails</h2>
-                <p><strong>Organisateur:</strong> {{ object.get_userprofile.get_full_name }}</p>
-                <p><strong>Club:</strong> {{ object.get_userprofile.get_club }}</p>
+                <p><strong>Organisateur:</strong> {{ object.get_vbuser.get_full_name }}</p>
+                <p><strong>Club:</strong> {{ object.get_vbuser.get_club }}</p>
                 <p><strong>Gymnases:</strong> {{ object.get_nb_gymnasiums }}</p>
                 <p><strong>Terrains:</strong> {{ object.get_nb_terrains }}</p>
                 <p><strong>Équipes:</strong> {{ object.get_nb_teams }}</p>
@@ -82,6 +82,14 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="bs-component justify">
+            <h2>Description</h2>
+                {{ object.get_description|linebreaksbr }}
+        </div>
+    </div>
+
 </div>
 
 {% endblock %}

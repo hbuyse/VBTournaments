@@ -11,3 +11,7 @@ body {
     vertical-align: middle;
     float: none;
 }
+
+.justify {
+    text-align: justify;
+}

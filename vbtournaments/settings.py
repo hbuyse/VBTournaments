@@ -28,7 +28,7 @@ DEBUG = True
 
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,8 +39,9 @@ INSTALLED_APPS = (
     'easy_maps',
     'bootstrap3',
     'bootstrapform',
+    'accounts',
     'core',
-)
+]
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -107,5 +108,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-
-AUTH_USER_MODEL = 'core.UserProfile'

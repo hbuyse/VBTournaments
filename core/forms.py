@@ -3,6 +3,7 @@
 __author__ = "hbuyse"
 
 from django import forms
+from django.forms.widgets import NumberInput, RadioSelect
 import datetime
 
 from .views import Event, Tournament
@@ -10,62 +11,46 @@ from .views import Event, Tournament
 
 class EventForm(forms.ModelForm):
 
-    SURFACE_CHOICES = (('beach', 'Sable'), ('grass', 'Herbe'), ('indoor', 'Intérieur'))
-
-    # userprofile is defined later
-    # zip_code is defined later
-    # region is defined later
-    # latitude is defined later
-    # longitude is defined later
-    # full is defined later
-
-    name = forms.CharField(label="Nom du tournoi",
-                           max_length=100)
-
-
-    nb_terrains = forms.IntegerField(label="Nombre de gymnases",
-                                     min_value=1)
-    nb_gymnasiums = forms.IntegerField(label="Nombre de terrains",
-                                       min_value=1)
-    nb_teams = forms.IntegerField(label="Nombre d'équipes",
-                                  min_value=1)
-    night = forms.BooleanField(label="Tournoi de nuit",
-                               initial=False,
-                               required=False)
-    surface = forms.ChoiceField(label="Surface",
-                                choices=SURFACE_CHOICES,
-                                widget=forms.RadioSelect)
-
-
-    name_gymnasium = forms.CharField(label="Nom du gymnase",
-                                     max_length=255,
-                                     required=False)
-    nb_in_street = forms.CharField(label="Numéro de rue",
-                                   max_length=10,
-                                   required=False)
-    street = forms.CharField(label="Nom de rue",
-                             max_length=255)
-    city = forms.CharField(label="Ville",
-                           max_length=255)
-    country = forms.CharField(label="Pays",
-                              max_length=50)
-
-    description = forms.CharField(label="Description",
-                                  widget=forms.Textarea,
-                                  required=False)
-    website = forms.URLField(label="Site internet",
-                             max_length=100,
-                             required=False)
+    # surface = forms.ChoiceField(widget=forms.RadioSelect(), choices=SURFACE_CHOICES)
 
     class Meta:
+
+        SURFACE_CHOICES = (('beach', 'Sable'), ('grass', 'Herbe'), ('indoor', 'Intérieur'))
+
         model = Event
-        fields = '__all__'
-        # fields = [
-        #     'name',
-        #     'nb_terrains',
-        #     'nb_gymnasiums',
-        #     'nb_teams',
-        # ]
+
+        fields = ['name', 'nb_terrains', 'nb_gymnasiums', 'nb_teams', 'night', 'surface', 'name_gymnasium',
+                  'nb_in_street', 'street', 'city', 'country', 'description', 'website']
+
+        labels = {
+            'city': 'Ville',
+            'country': 'Pays',
+            'description': 'Description',
+            'full': 'Complet',
+            'latitude': 'Latitude',
+            'longitude': 'Longitude',
+            'name': 'Nom du tournoi',
+            'name_gymnasium': 'Nom du gymnase',
+            'nb_gymnasiums': 'Nombre de terrains',
+            'nb_in_street': 'Numéro de rue',
+            'nb_teams': 'Nombre d\'équipes',
+            'nb_terrains': 'Nombre de gymnases',
+            'night': 'Tournoi de nuit',
+            'price': 'Prix par équipe',
+            'region': 'Région',
+            'street': 'Nom de rue',
+            'surface': 'Surface',
+            'website': 'Site internet',
+            'zip_code': 'Code postal',
+        }
+
+        widgets= {
+            # 'description': forms.Textarea(),
+            'nb_gymnasiums': NumberInput(attrs={'min': '1'}),
+            'nb_teams': NumberInput(attrs={'min': '1'}),
+            'nb_terrains': NumberInput(attrs={'min': '1'}),
+            'surface': RadioSelect(choices=SURFACE_CHOICES),
+        }
 
 
 class TournamentForm(forms.ModelForm):

@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from geopy.geocoders import Nominatim, GoogleV3
 import json
 
-from .models import Tournament, Event, UserProfile
+from .models import Tournament, Event
 from .forms import EventForm
 
 # Create your views here.
@@ -77,7 +77,7 @@ def add_new_event(request):
 
 
             e = Event.objects.create(
-                userprofile=userprofile,
+                vbuser=vbuser,
                 name=name,
                 nb_terrains=nb_terrains,
                 nb_gymnasiums=nb_gymnasiums,

@@ -10,74 +10,25 @@ import logging
 logging.basicConfig()
 logger = logging.getLogger()
 
-import re
-
-
-class UserProfile(models.Model):
-    """UserProfile : person that create a tournament
-
-    To one UserProfile corresponds MULTIPLE events
-    """
-    phone_validator = re.compile('^((\+|00)33\s?|0)[12345679](\s?\d{2}){4}$')
-
-    user = user = models.OneToOneField(User)
-    club = models.CharField(max_length=100, blank=True)
-    phone = models.CharField(max_length=100, blank=True)
-
-    share_mail = models.BooleanField(default=True)
-    share_phone = models.BooleanField(default=False)
-
-    def __str__(self):
-        return "{0} <{1}>".format(self.user.get_username(), self.user.email)
-
-    def get_user(self):
-        return self.user
-
-    def get_username(self):
-        return self.user.get_username()
-
-    def get_full_name(self):
-        return self.user.get_full_name()
-
-    def get_short_name(self):
-        return self.user.get_short_name()
-
-    def get_email(self):
-        return self.user.email
-
-    def get_club(self):
-        return self.club
-
-    def get_phone(self):
-        return self.phone
-
-    def get_share_mail(self):
-        return self.share_mail
-
-    def get_share_phone(self):
-        return self.share_phone
-
 
 class Event(models.Model):
     """Event : details of the tournament(s)
 
     To one event corresponds MULTIPLE tournaments
     """
-    userprofile = models.ForeignKey('UserProfile', related_name='events', unique=True)
+    SURFACE_CHOICES = (('beach', 'Sable'), ('grass', 'Herbe'), ('indoor', 'Intérieur'))
+
+    vbuserprofile = models.ForeignKey('accounts.VBUserProfile', related_name='events')
     name = models.CharField(max_length=100, blank=False)
 
-    nb_terrains = models.PositiveSmallIntegerField(blank=False)
-    nb_gymnasiums = models.PositiveSmallIntegerField(blank=False)
-    nb_teams = models.PositiveSmallIntegerField(blank=False)
+    nb_terrains = models.IntegerField(blank=False)
+    nb_gymnasiums = models.IntegerField(blank=False)
+    nb_teams = models.SmallIntegerField(blank=False)
 
     night = models.BooleanField(default=False)
     surface = models.CharField(max_length=10,
-                               choices=[
-                                   ('beach', 'Sable'),
-                                   ('grass', 'Herbe'),
-                                   ('indoor', 'Intérieur')
-                               ],
-                               blank=False)
+                               blank=False,
+                               choices=SURFACE_CHOICES)
 
     name_gymnasium = models.CharField(max_length=255, blank=True)
     nb_in_street = models.CharField(max_length=10, blank=True)
@@ -105,11 +56,11 @@ class Event(models.Model):
         """
         return self.tournaments.order_by('date').all()
 
-    def get_userprofile(self):
+    def get_vbuserprofile(self):
         """
-        :return: The first name and the last_name of the event's organizer (UserProfile).
+        :return: The first name and the last_name of the event's organizer (VBUserProfile).
         """
-        return self.userprofile
+        return self.vbuserprofile
 
     def get_address(self):
         """
@@ -139,9 +90,6 @@ class Event(models.Model):
         :return: a list of all the tournaments
         """
         return Event.objects.all()
-
-    def ger_userprofile(self):
-        return self.userprofile
 
     def get_name(self):
         return self.name
@@ -199,7 +147,7 @@ class Tournament(models.Model):
     """Create a Tournament
 
     It could have multiple formats of tournaments during the same day.
-    One tournament is at ONE place and belongs to ONE UserProfile
+    One tournament is at ONE place and belongs to ONE VBUserProfile
     """
     TWO_VS_TWO = 2
     THREE_VS_THREE = 3
@@ -221,6 +169,8 @@ class Tournament(models.Model):
                                       ('female', 'Féminin'),
                                       ('mixed', 'Mixte')
                                   ])
+
+    price = models.FloatField(blank=False, default=0)
 
     # Different levels
     hobby = models.BooleanField(default=False)

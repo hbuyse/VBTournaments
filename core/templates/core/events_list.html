@@ -16,34 +16,49 @@
 
     {% if events_list %}
         {% for e in events_list %}
-            <div class="bs-component">
-                <div class="panel panel-primary tournament">
-                    <div class="panel-heading">
-                        <div class="btn-group pull-right">
-                            <a href="{% url 'core:event_detail' e.id %}" class="btn btn-default btn-xs">Details</a>
-                            {# <a href="{% url 'core:inscription_form' e.id %}" class="btn btn-default btn-xs">Inscription</a> #}
-                            {% if e.get_full %}
-                                <a href="#" class="btn btn-danger btn-xs disabled">Inscription</a>
-                            {% else %}
-                                <a href="#" class="btn btn-info btn-xs">Inscription</a>
-                            {% endif %}
+            <div class="col-lg-6">
+                <div class="bs-component">
+                    {% if e.get_surface == "indoor" %}
+                    <div class="panel panel-primary tournament">
+                    {% elif e.get_surface == "sand" %}
+                    <div class="panel panel-warning tournament">
+                    {% elif e.get_surface == "grass" %}
+                    <div class="panel panel-success tournament">
+                    {% endif %}
+                        <div class="panel-heading">
+                            <div class="btn-group pull-right">
+                                <a href="{% url 'core:event_detail' e.id %}" class="btn btn-default btn-xs">Details</a>
+                                {% if e.get_full %}
+                                    <a href="#" class="btn btn-danger btn-xs disabled">Inscription</a>
+                                {% else %}
+                                    <a href="#" class="btn btn-info btn-xs">Inscription</a>
+                                {% endif %}
+                            </div>
+                            <h3 class="btn-block panel-title" style="line-height:25.5px;">{{ e.get_city }} ({{ e.get_zip_code }} - {{ e.get_country_iso }})</h3>
                         </div>
-                        <h3 class="btn-block panel-title" style="line-height:25.5px;">{{ e.get_city }} ({{ e.get_zip_code }} - {{ e.get_country_iso }})</h3>
-                    </div>
-                    <div class="panel-body">
+                        <div class="panel-body">
 
-                    {% for t in e.get_all_tournaments_related %}
-                        {{ t.get_nb_players }}x{{ t.get_nb_players }}
+                        {% for t in e.get_all_tournaments_related %}
 
-                        {% if t.get_sx_players == "female" %}
-                            Féminin
-                        {% elif t.get_sx_players == "male" %}
-                            Masculin
-                        {% elif t.get_sx_players == "mixed" %}
-                            Mixte
-                        {% endif %}
-                    {% endfor %}
+                            <div class="pull-right">
+                            {% for l in t.get_list_levels %}
+                                {{ l }}{% if not l.last %},{% endif %}
+                            {% endfor %}
+                            </div>
+                            {{ t.get_nb_players }}x{{ t.get_nb_players }}
 
+                            {% if t.get_sx_players == "female" %}
+                                Féminin
+                            {% elif t.get_sx_players == "male" %}
+                                Masculin
+                            {% elif t.get_sx_players == "mixed" %}
+                                Mixte
+                            {% endif %}
+
+                            <br/>
+                        {% endfor %}
+
+                        </div>
                     </div>
                 </div>
             </div>
