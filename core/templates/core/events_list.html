@@ -42,7 +42,7 @@
 
                             <div class="pull-right">
                             {% for l in t.get_list_levels %}
-                                {{ l }}{% if not l.last %},{% endif %}
+                                {{ l }}{% if not forloop.last %},{% endif %}
                             {% endfor %}
                             </div>
                             {{ t.get_nb_players }}x{{ t.get_nb_players }}

@@ -26,7 +26,7 @@
                 <h1 id="type">{{ object.name }}</h1>
                 {% if object.get_surface == "grass" %}
                     <h4>Tournoi se déroulant sur de l'herbe.</h4>
-                {% elif object.get_surface == "beach" %}
+                {% elif object.get_surface == "sand" %}
                     <h4>Tournoi se déroulant sur du sable.</h4>
                 {% elif object.get_surface == "indoor" %}
                     <h4>Tournoi se déroulant à l'intérieur.</h4>
@@ -104,6 +104,12 @@
                             {% elif d.get_sx_players == "mixed" %}
                                 Mixte
                             {% endif %}
+
+                            <br/>
+
+                            {% for l in d.get_list_levels %}
+                                {{ l }}{% if not forloop.last %},{% endif %}
+                            {% endfor %}
                         </p>
                     </div>
                 {% endfor %}
