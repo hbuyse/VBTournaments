@@ -16,8 +16,9 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from . import views
+
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('core.urls', namespace='core')),
-    url(r'^users/', include('accounts.urls', namespace='accounts')),
+    url(r'^$', views.VBUserProfileListView.as_view(), name='vbprofiles_list'),
+    url(r'^(?P<pk>[0-9]+)$', views.VBUserProfileDetailView.as_view(), name='vbprofile_detail'),
 ]
