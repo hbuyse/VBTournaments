@@ -11,11 +11,11 @@ from .views import Event, Tournament
 
 class EventForm(forms.ModelForm):
 
-    # surface = forms.ChoiceField(widget=forms.RadioSelect(), choices=SURFACE_CHOICES)
+    SURFACE_CHOICES = (('beach', 'Sable'), ('grass', 'Herbe'), ('indoor', 'Intérieur'))
+
+    surface = forms.ChoiceField(widget=forms.RadioSelect(), choices=SURFACE_CHOICES)
 
     class Meta:
-
-        SURFACE_CHOICES = (('beach', 'Sable'), ('grass', 'Herbe'), ('indoor', 'Intérieur'))
 
         model = Event
 
@@ -49,7 +49,7 @@ class EventForm(forms.ModelForm):
             'nb_gymnasiums': NumberInput(attrs={'min': '1'}),
             'nb_teams': NumberInput(attrs={'min': '1'}),
             'nb_terrains': NumberInput(attrs={'min': '1'}),
-            'surface': RadioSelect(choices=SURFACE_CHOICES),
+            # 'surface': RadioSelect(choices=SURFACE_CHOICES, empty_label=None),
         }
 
 
