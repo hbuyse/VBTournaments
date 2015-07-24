@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bs-component">
+    <ul class="breadcrumb">
+        <li><a href="{% url 'core:home' %}">Accueil</a></li>
+        <li><a href="{% url 'accounts:vbprofiles_list' %}">Utilisateurs</a></li>
+        <li class="active">{{ object.get_full_name }}</li>
+    </ul>
+</div>
+
+<div class="bs-docs-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h1>{{ object.get_full_name }}</h1>
+                <h4>{{ object.get_username }}</h4>
+            </div>
+        </div>
+    </div>
+
+
+    {% if object.get_user.is_staff %}
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">Administrateur</h3>
+            </div>
+            <div class="panel-body">
+                Cet utilisateur fait parti des administrateurs du site.
+                En cas de problème, vous pouvez le contacter en envoyant un mail à <a href="mailto:tournaments.vb@gmail.com">tournaments.vb@gmail.com</a>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-lg-4">
+            <h2>Informations</h2>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="mytd-user">
+                            <i class="fa fa-envelope"></i>
+                        </td>
+                        <td>{{ object.get_email }}</td>
+                    </tr>
+                    <tr>
+                        <td class="mytd-user">
+                            <i class="fa fa-phone"></i>
+                        </td>
+                        <td>{{ object.get_phone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-4">
+            <h2>Club et niveau</h2>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="mytd-user">
+                            <strong>Club:</strong>
+                        </td>
+                        <td>{{ object.get_club }}</td>
+                    </tr>
+                    <tr>
+                        <td class="mytd-user">
+                            <strong>Niveau:</strong>
+                        </td>
+                        <td>{{ object.get_level }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-4">
+            <h2>Réseaux sociaux</h2>
+            <table class="table table-hover">
+                <tbody data-link="row" class="rowlink">
+                    <tr>
+                        <td class="mytd-user">
+                            <a style="color: #2C3E50;" href="https://www.facebook.com/{{ object.get_facebook }}">
+                                <i class="fa fa-facebook-official fa-1g"></i>
+                            </a>
+                        </td>
+                        <td>{{ object.get_facebook }}</td>
+                    </tr>
+                    <tr>
+                        <td class="mytd-user">
+                            <a style="color: #2C3E50;" href="https://www.twitter.com/{{ object.get_twitter }}">
+                                <i class="fa fa-twitter fa-1g"></i>
+                            </a></td>
+                        <td>{{ object.get_twitter }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

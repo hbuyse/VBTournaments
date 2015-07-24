@@ -16,9 +16,9 @@ class Event(models.Model):
 
     To one event corresponds MULTIPLE tournaments
     """
-    SURFACE_CHOICES = (('beach', 'Sable'), ('grass', 'Herbe'), ('indoor', 'Intérieur'))
+    SURFACE_CHOICES = (('sand', 'Sable'), ('grass', 'Herbe'), ('indoor', 'Intérieur'))
 
-    vbuserprofile = models.ForeignKey(User, related_name='events')
+    vbuserprofile = models.ForeignKey('accounts.VBUserProfile', related_name='events')
     name = models.CharField(max_length=100, blank=False)
 
     nb_terrains = models.IntegerField(blank=False)

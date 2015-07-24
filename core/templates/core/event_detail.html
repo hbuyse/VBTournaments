@@ -26,7 +26,7 @@
                 <h1 id="type">{{ object.name }}</h1>
                 {% if object.get_surface == "grass" %}
                     <h4>Tournoi se déroulant sur de l'herbe.</h4>
-                {% elif object.get_surface == "beach" %}
+                {% elif object.get_surface == "sand" %}
                     <h4>Tournoi se déroulant sur du sable.</h4>
                 {% elif object.get_surface == "indoor" %}
                     <h4>Tournoi se déroulant à l'intérieur.</h4>
@@ -41,11 +41,40 @@
         <div class="col-lg-4">
             <div class="bs-component">
                 <h2>Détails</h2>
-                <p><strong>Organisateur:</strong> {{ object.get_vbuser.get_full_name }}</p>
-                <p><strong>Club:</strong> {{ object.get_vbuser.get_club }}</p>
-                <p><strong>Gymnases:</strong> {{ object.get_nb_gymnasiums }}</p>
-                <p><strong>Terrains:</strong> {{ object.get_nb_terrains }}</p>
-                <p><strong>Équipes:</strong> {{ object.get_nb_teams }}</p>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td class="mytd-user">
+                                <strong>Organisateur:</strong>
+                            </td>
+                            <td>{{ object.get_vbuserprofile.get_full_name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="mytd-user">
+                                <strong>Club:</strong>
+                            </td>
+                            <td>{{ object.get_vbuserprofile.get_club }}</td>
+                        </tr>
+                        <tr>
+                            <td class="mytd-user">
+                                <strong>Gymnases:</strong>
+                            </td>
+                            <td>{{ object.get_nb_gymnasiums }}</td>
+                        </tr>
+                        <tr>
+                            <td class="mytd-user">
+                                <strong>Terrains:</strong>
+                            </td>
+                            <td>{{ object.get_nb_terrains }}</td>
+                        </tr>
+                        <tr>
+                            <td class="mytd-user">
+                                <strong>Équipes:</strong>
+                            </td>
+                            <td>{{ object.get_nb_teams }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="col-lg-4">
@@ -75,6 +104,12 @@
                             {% elif d.get_sx_players == "mixed" %}
                                 Mixte
                             {% endif %}
+
+                            <br/>
+
+                            {% for l in d.get_list_levels %}
+                                {{ l }}{% if not forloop.last %},{% endif %}
+                            {% endfor %}
                         </p>
                     </div>
                 {% endfor %}
