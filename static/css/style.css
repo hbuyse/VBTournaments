@@ -3,6 +3,7 @@ body {
 }
 
 .container-fluid {
+    min-height: 100%;
     width: 1400px;
 }
 
@@ -12,13 +13,16 @@ body {
     float: none;
 }
 
+
 .justify {
     text-align: justify;
 }
 
+
 .table th, .table td {
      border-top: none !important;
 }
+
 
 .mytd-user {
     width: 30px;
