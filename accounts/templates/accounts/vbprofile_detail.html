@@ -76,25 +76,16 @@
 
         <div class="col-xs-6 col-md-4">
             <h2>Réseaux sociaux</h2>
-            <table class="table table-hover">
-                <tbody data-link="row" class="rowlink">
-                    <tr>
-                        <td class="mytd-user">
-                            <a style="color: #2C3E50;" href="https://www.facebook.com/{{ object.get_facebook }}">
-                                <i class="fa fa-facebook-official fa-1g"></i>
-                            </a>
-                        </td>
-                        <td>{{ object.get_facebook }}</td>
-                    </tr>
-                    <tr>
-                        <td class="mytd-user">
-                            <a style="color: #2C3E50;" href="https://www.twitter.com/{{ object.get_twitter }}">
-                                <i class="fa fa-twitter fa-1g"></i>
-                            </a></td>
-                        <td>{{ object.get_twitter }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p>
+                <a class="btn btn-default btn-sm " href="https://www.facebook.com/{{ object.get_facebook }}">
+                    <i class="fa fa-facebook-official fa-1g pull-left"></i>&nbsp;{{ object.get_facebook }}
+                </a>
+            </p>
+            <p>
+                <a class="btn btn-default btn-sm " style="vertical-align: middle;" href="https://www.twitter.com/{{ object.get_twitter }}">
+                    <i class="fa fa-twitter fa-1g pull-left"></i>{{ object.get_twitter }}
+                </a>
+            </p>
         </div>
     </div>
 
