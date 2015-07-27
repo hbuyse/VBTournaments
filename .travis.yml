@@ -1,0 +1,20 @@
+language: python
+python:
+    - "3.3"
+    - "3.4"
+    
+addons:
+  postgresql: "9.4"
+
+before_script:
+  - psql -c 'CREATE DATABASE vbtournaments;' -U postgres
+
+# command to install dependencies
+install:
+    - pip install -r requirements.txt
+
+# command to run tests
+script: py.test
+
+notifications:
+    email: false
