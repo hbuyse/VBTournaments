@@ -38,7 +38,7 @@ class EventAdmin(admin.ModelAdmin):
         ('Informations', {'fields': ['nb_terrains', 'nb_gymnasiums', 'nb_teams', 'website', 'description']}),
         ('Address',      {'fields': ['name_gymnasium', 'nb_in_street', 'street', 'zip_code', 'city', 'region', 'country']}),
     ]
-    list_display = ('name', 'get_vbuser_username', 'nb_teams', 'nb_terrains')
+    list_display = ('name', 'get_vbuser_username', 'nb_teams', 'nb_terrains', 'city', 'country')
 
     def get_vbuser_username(self, obj):
         """Get the login of the person who has registered the event"""
