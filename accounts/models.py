@@ -50,6 +50,10 @@ class VBUserProfile(models.Model):
     def __str__(self):
         return "{0} <{1}>".format(self.get_username(), self.get_email())
 
+    ################
+    # User methods #
+    ################
+
     def get_user(self):
         return self.user
 
@@ -68,6 +72,25 @@ class VBUserProfile(models.Model):
     def get_email(self):
         return self.user.email
 
+    def get_is_staff(self):
+        return self.user.is_staff
+
+    def get_is_active(self):
+        return self.user.is_active
+
+    def get_is_superuser(self):
+        return self.user.is_superuser
+
+    def get_last_login(self):
+        return self.user.last_login
+
+    def get_date_joined(self):
+        return self.user.date_joined
+
+
+    #########################
+    # VBUserProfile methods #
+    #########################
     def get_club(self):
         return self.club
 
