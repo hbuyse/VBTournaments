@@ -36,7 +36,7 @@ class VBUserProfile(models.Model):
     user = models.OneToOneField(User)
 
     club = models.CharField(max_length=100, blank=True)
-    level = models.CharField(max_length=10,
+    level = models.CharField(max_length=14,
                              blank=False,
                              choices=LEVEL_CHOICES)
     phone = models.CharField(max_length=100, blank=True)
