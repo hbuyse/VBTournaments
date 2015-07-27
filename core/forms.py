@@ -1,6 +1,7 @@
-# coding: utf-8
+#! /usr/bin/env python
 
-__author__ = "hbuyse"
+__author__ = "Henri Buyse"
+
 
 from django import forms
 from django.forms.widgets import NumberInput, RadioSelect

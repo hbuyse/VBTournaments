@@ -1,6 +1,7 @@
-# coding: utf-8
+#! /usr/bin/env python
 
-__author__ = "hbuyse"
+__author__ = "Henri Buyse"
+
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -28,7 +29,7 @@ class VBUserProfile(models.Model):
                     ('national_3', 'National 3'),
                     ('professional_a', 'Professionel A'),
                     ('professional_b', 'Professionel B'),
-                    ('kids)', 'Enfant'))
+                    ('kids', 'Enfant'))
 
     phone_validator = re.compile('^((\+|00)33\s?|0)[12345679](\s?\d{2}){4}$')
 

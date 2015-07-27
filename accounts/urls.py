@@ -1,3 +1,8 @@
+#! /usr/bin/env python
+
+__author__ = "Henri Buyse"
+
+
 """vbtournaments URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
