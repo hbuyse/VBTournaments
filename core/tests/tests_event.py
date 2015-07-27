@@ -37,7 +37,7 @@ def test_get_all_events():
 
 
 def test_get_name():
-    e = Event.objects.create(name="VolleyBall Day")
+    e = Event(name="VolleyBall Day")
 
     assert e.get_name() != None
     assert e.get_name() != ''
@@ -45,7 +45,7 @@ def test_get_name():
 
 
 def test_get_nb_terrains():
-    e = Event.objects.create(nb_terrains=6)
+    e = Event(nb_terrains=6)
 
     assert e.get_nb_terrains() != None
     assert e.get_nb_terrains() != int()
@@ -54,30 +54,30 @@ def test_get_nb_terrains():
 
 
 def test_get_nb_gymnasiums():
-    e = Event.objects.create(nb_gymnasiums=2)
+    e = Event(nb_gymnasiums=2)
 
-    assert e.get_nb_terrains() != None
-    assert e.get_nb_terrains() != int()
-    assert e.get_nb_terrains() != 9
-    assert e.get_nb_terrains() == 2
+    assert e.get_nb_gymnasiums() != None
+    assert e.get_nb_gymnasiums() != int()
+    assert e.get_nb_gymnasiums() != 9
+    assert e.get_nb_gymnasiums() == 2
 
 
 def test_get_nb_teams():
-    e = Event.objects.create(nb_teams=36)
+    e = Event(nb_teams=36)
 
-    assert e.get_nb_terrains() != None
-    assert e.get_nb_terrains() != int()
-    assert e.get_nb_terrains() != 9
-    assert e.get_nb_terrains() == 36
+    assert e.get_nb_teams() != None
+    assert e.get_nb_teams() != int()
+    assert e.get_nb_teams() != 9
+    assert e.get_nb_teams() == 36
 
 
 
 def test_get_night():
-    e = Event.objects.create()
+    e = Event()
 
-    assert e.get_nb_terrains() != None
-    assert e.get_nb_terrains() != True
-    assert e.get_nb_terrains() == False
+    assert e.get_night() != None
+    assert e.get_night() != True
+    assert e.get_night() == False
 
 
 
@@ -126,8 +126,8 @@ def test_get_website():
 
 
 def test_get_full():
-    e = Event.objects.create()
+    e = Event()
 
-    assert e.get_nb_terrains() != None
-    assert e.get_nb_terrains() != True
-    assert e.get_nb_terrains() == False
+    assert e.get_full() != None
+    assert e.get_full() != True
+    assert e.get_full() == False
