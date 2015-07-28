@@ -4,7 +4,7 @@ __author__ = 'Henri Buyse'
 
 
 import pytest
-from models import Event, Tournament
+from core.models import Event, Tournament
 
 
 def test_str():
