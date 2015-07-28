@@ -8,6 +8,12 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
+
+A basic database set-up for Travis CI.
+The set-up uses the 'TRAVIS' (== True) environment variable on Travis
+to detect the session, and changes the default database accordingly.
+Be mindful of where you place this code, as you may accidentally
+assign the default database to another configuration later in your code.
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -89,10 +95,23 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Parse database configuration from $DATABASE_URL
-DATABASES = {
-    'default' : dj_database_url.config()
-}
+
+if 'TRAVIS' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE':   'django.db.backends.postgresql_psycopg2',
+            'NAME':     'vbtournaments',
+            'USER':     'postgres',
+            'PASSWORD': '',
+            'HOST':     'localhost',
+            'PORT':     '',
+        }
+    }
+else:
+    # Parse database configuration from $DATABASE_URL
+    DATABASES = {
+        'default' : dj_database_url.config()
+    }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
