@@ -13,13 +13,15 @@
     {% bootstrap_javascript jquery=1 %}
     {# {% bootstrap_css %} #}
     <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+    <script src="https://platform.twitter.com/widgets.js" async="" id="twitter-wjs"></script>
     {# <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css"> #}
 
     {# Font Awesome : for icons #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     {# Personal CSS stylesheet #}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
 
     {# Display django.contrib.messages as Bootstrap alerts #}
     {% bootstrap_messages %}
@@ -35,14 +37,14 @@
     {% include "navbar_header.html" %}
 
     {# Beginning of all other pages #}
-    <div class="container-fluid">
+    <div class="container-fluid" id="vbt-content">
 
         {% block content %}{% endblock %}
 
     </div>
 
-    {# Add the bootstrapped navbar footer #}
-    {# {% include "navbar_footer.html" %} #}
+
+    {% include "footer.html" %}
 
 </body>
 </html>

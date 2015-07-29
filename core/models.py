@@ -1,6 +1,7 @@
-# coding: utf-8
+#! /usr/bin/env python
 
-__author__ = "hbuyse"
+__author__ = "Henri Buyse"
+
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -132,6 +133,12 @@ class Event(models.Model):
 
     def get_country_iso(self):
         return self.country[:2].upper()
+
+    def get_latitude(self):
+        return self.latitude
+
+    def get_longitude(self):
+        return self.longitude
 
     def get_description(self):
         return self.description

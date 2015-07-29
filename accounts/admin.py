@@ -1,3 +1,8 @@
+#! /usr/bin/env python
+
+__author__ = "Henri Buyse"
+
+
 from django.contrib import admin
 from .models import VBUserProfile
 

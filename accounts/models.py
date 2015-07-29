@@ -1,6 +1,7 @@
-# coding: utf-8
+#! /usr/bin/env python
 
-__author__ = "hbuyse"
+__author__ = "Henri Buyse"
+
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -28,14 +29,14 @@ class VBUserProfile(models.Model):
                     ('national_3', 'National 3'),
                     ('professional_a', 'Professionel A'),
                     ('professional_b', 'Professionel B'),
-                    ('kids)', 'Enfant'))
+                    ('kids', 'Enfant'))
 
     phone_validator = re.compile('^((\+|00)33\s?|0)[12345679](\s?\d{2}){4}$')
 
     user = models.OneToOneField(User)
 
     club = models.CharField(max_length=100, blank=True)
-    level = models.CharField(max_length=10,
+    level = models.CharField(max_length=14,
                              blank=False,
                              choices=LEVEL_CHOICES)
     phone = models.CharField(max_length=100, blank=True)
@@ -48,6 +49,10 @@ class VBUserProfile(models.Model):
 
     def __str__(self):
         return "{0} <{1}>".format(self.get_username(), self.get_email())
+
+    ################
+    # User methods #
+    ################
 
     def get_user(self):
         return self.user
@@ -67,6 +72,25 @@ class VBUserProfile(models.Model):
     def get_email(self):
         return self.user.email
 
+    def get_is_staff(self):
+        return self.user.is_staff
+
+    def get_is_active(self):
+        return self.user.is_active
+
+    def get_is_superuser(self):
+        return self.user.is_superuser
+
+    def get_last_login(self):
+        return self.user.last_login
+
+    def get_date_joined(self):
+        return self.user.date_joined
+
+
+    #########################
+    # VBUserProfile methods #
+    #########################
     def get_club(self):
         return self.club
 

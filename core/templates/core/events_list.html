@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="bs-component">
     <ul class="breadcrumb">
         <li><a href="{% url 'core:home' %}">Accueil</a></li>
@@ -9,11 +10,12 @@
 </div>
 
 <div class="bs-component">
-
     <div class="page-header">
         <h1>Liste des tournois</h1>
     </div>
+</div>
 
+<div class="bs-component">
     {% if events_list %}
         {% for e in events_list %}
             <div class="col-lg-6">
