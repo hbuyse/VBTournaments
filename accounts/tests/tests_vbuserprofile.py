@@ -12,7 +12,8 @@ from django.contrib.auth.models import User
 
 @pytest.mark.django_db
 def test_vbu_password():
-    vbu = VBUserProfile.objects.create(user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'))
+    jd = user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto')
+    vbu = VBUserProfile.objects.create(user=jd)
 
     # User not in database
     assert check_password({}, 'unknown', '') == None
@@ -24,13 +25,11 @@ def test_vbu_password():
     assert vbu.get_user().check_password('toto') == True
 
     # correct password, but user is inactive
-    User.objects.filter(username='jdoe').update(is_active=False)
-    assert vbu.get_user().check_password({}, 'jdoe', 'toto') == False
-    assert check_password({}, 'jdoe', 'toto') == False
+    jd.is_active = False
+    assert vbu.get_user().check_password({}) == False
 
     # Valid user with incorrect password
-    assert vbu.get_user().check_password({}, 'jdoe', 'incorrect') == False
-    assert check_password({}, 'jdoe', 'incorrect') == False
+    assert vbu.get_user().check_password({}) == False
 
 
 @pytest.mark.django_db
