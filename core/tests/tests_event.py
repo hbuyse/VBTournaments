@@ -5,7 +5,9 @@ __author__ = 'Henri Buyse'
 
 import pytest
 from core.models import Event, Tournament
+from accounts.models import VBUserProfile
 
+from django.contrib.auth.models import User
 
 
 
@@ -13,12 +15,22 @@ def test_get_all_tournaments_related():
     assert True
 
 
+@pytest.mark.django_db
 def test_get_vbuserprofile():
     vbu = VBUserProfile.objects.create(user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'))
-    e = Event.objects.create(vbuserprofile=vbu)
+    e = Event.objects.create(name="VolleyBall Day",
+                             nb_terrains=1,
+                             nb_gymnasiums=1,
+                             nb_teams=1,
+                             street="Zozo",
+                             city="test",
+                             country="France",
+                             vbuserprofile=vbu)
 
     assert e.get_vbuserprofile() != None
-    assert e.get_vbuserprofile() != VBUserProfile.objects.create()
+
+    jdoe1 = User.objects.create_user(username="jdoe1")
+    assert e.get_vbuserprofile() != VBUserProfile.objects.create(user=jdoe1)
     assert e.get_vbuserprofile() == vbu
 
 
