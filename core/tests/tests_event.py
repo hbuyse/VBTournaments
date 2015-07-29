@@ -77,14 +77,12 @@ def test_get_nb_teams():
     assert e.get_nb_teams() == 36
 
 
-
 def test_get_night():
     e = Event()
 
     assert e.get_night() != None
     assert e.get_night() != True
     assert e.get_night() == False
-
 
 
 def test_get_surface():
