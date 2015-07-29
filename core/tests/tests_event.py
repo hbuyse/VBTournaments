@@ -7,12 +7,6 @@ import pytest
 from core.models import Event, Tournament
 
 
-def test_str():
-    e = Event.objects.create(name="VolleyBall Day")
-
-    assert print(e) != None
-    assert print(e) != ''
-    assert print(e) == "VolleyBall Day"
 
 
 def test_get_all_tournaments_related():
