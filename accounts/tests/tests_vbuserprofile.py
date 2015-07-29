@@ -38,11 +38,6 @@ def test_get_user():
         user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'))
 
     assert vbu.get_user() != None
-    assert vbu.get_user() != User.objects.create_user()
-    assert vbu.get_user() != User.objects.create_user(username='jdoe')
-    assert vbu.get_user() != User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr')
-    assert vbu.get_user() != User.objects.create_user(username='jdoe', password='toto')
-    assert vbu.get_user() == User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto')
 
 
 @pytest.mark.django_db
