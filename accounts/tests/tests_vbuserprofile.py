@@ -45,6 +45,7 @@ def test_get_user():
     assert vbu.get_user() == User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto')
 
 
+@pytest.mark.django_db
 def test_get_username():
     vbu = VBUserProfile.objects.create(
         user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'))
