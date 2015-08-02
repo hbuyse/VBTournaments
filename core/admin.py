@@ -26,7 +26,7 @@ class TournamentAdmin(admin.ModelAdmin):
 
     def get_vbuser_club(self, obj):
         """Get the name of the club who has registered the event"""
-        return obj.event.vbuserprofile.get_club()
+        return obj.event.vbuserprofile.club
 
 
 
@@ -46,7 +46,7 @@ class EventAdmin(admin.ModelAdmin):
 
     def get_vbuser_club(self, obj):
         """Get the name of the club who has registered the event"""
-        return obj.vbuserprofile.get_club()
+        return obj.vbuserprofile.club
 
 
 
