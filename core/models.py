@@ -57,7 +57,7 @@ class Event(models.Model):
         """
         :return: A list of all the tournaments that are related to the event
         """
-        return self.tournaments.order_by('date').all()
+        return self.tournaments.order_by('_date').all()
 
     # TODO: Try to get this method (get_all_events) out of the class
     def get_all_events(self):
