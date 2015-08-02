@@ -93,55 +93,55 @@ def test_get_email():
 def test_get_club():
     vbu = VBUserProfile(club='ASMP')
 
-    assert vbu.get_club() != None
-    assert vbu.get_club() != ''
-    assert vbu.get_club() == 'ASMP'
+    assert vbu.club != None
+    assert vbu.club != ''
+    assert vbu.club == 'ASMP'
 
 
 def test_get_level():
     vbu = VBUserProfile(level='hobby')
 
-    assert vbu.get_level() != None
-    assert vbu.get_level() != ''
-    assert vbu.get_level() == 'Loisir'
+    assert vbu.level != None
+    assert vbu.level != ''
+    assert vbu.level == 'Loisir'
 
 
 def test_get_phone():
     vbu = VBUserProfile(phone='+330000000000')
 
-    assert vbu.get_phone() != None
-    assert vbu.get_phone() != ''
-    assert vbu.get_phone() != 330000000000
-    assert vbu.get_phone() == '+330000000000'
+    assert vbu.phone != None
+    assert vbu.phone != ''
+    assert vbu.phone != 330000000000
+    assert vbu.phone == '+330000000000'
 
 
 def test_get_share_mail():
     vbu = VBUserProfile()
 
-    assert vbu.get_share_mail() != None
-    assert vbu.get_share_mail() != False
-    assert vbu.get_share_mail() == True
+    assert vbu.share_mail != None
+    assert vbu.share_mail != False
+    assert vbu.share_mail == True
 
 
 def test_get_share_phone():
     vbu = VBUserProfile()
 
-    assert vbu.get_share_phone() != None
-    assert vbu.get_share_phone() != True
-    assert vbu.get_share_phone() == False
+    assert vbu.share_phone != None
+    assert vbu.share_phone != True
+    assert vbu.share_phone == False
 
 
 def test_get_facebook():
     vbu = VBUserProfile(facebook='jdoe')
 
-    assert vbu.get_facebook() != None
-    assert vbu.get_facebook() != ''
-    assert vbu.get_facebook() == 'jdoe'
+    assert vbu.facebook != None
+    assert vbu.facebook != ''
+    assert vbu.facebook == 'jdoe'
 
 
 def test_get_twitter():
     vbu = VBUserProfile(twitter='jdoe')
 
-    assert vbu.get_twitter() != None
-    assert vbu.get_twitter() != ''
-    assert vbu.get_twitter() == 'jdoe'
+    assert vbu.twitter != None
+    assert vbu.twitter != ''
+    assert vbu.twitter == 'jdoe'

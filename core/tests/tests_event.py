@@ -27,11 +27,11 @@ def test_get_vbuserprofile():
                              country="France",
                              vbuserprofile=vbu)
 
-    assert e.get_vbuserprofile() != None
+    assert e.vbuserprofile != None
 
     jdoe1 = User.objects.create_user(username="jdoe1")
-    assert e.get_vbuserprofile() != VBUserProfile.objects.create(user=jdoe1)
-    assert e.get_vbuserprofile() == vbu
+    assert e.vbuserprofile != VBUserProfile.objects.create(user=jdoe1)
+    assert e.vbuserprofile == vbu
 
 
 def get_maps_address():
@@ -45,44 +45,44 @@ def test_get_all_events():
 def test_get_name():
     e = Event(name="VolleyBall Day")
 
-    assert e.get_name() != None
-    assert e.get_name() != ''
-    assert e.get_name() == "VolleyBall Day"
+    assert e.name != None
+    assert e.name != ''
+    assert e.name == "VolleyBall Day"
 
 
 def test_get_nb_terrains():
     e = Event(nb_terrains=6)
 
-    assert e.get_nb_terrains() != None
-    assert e.get_nb_terrains() != int()
-    assert e.get_nb_terrains() != 9
-    assert e.get_nb_terrains() == 6
+    assert e.nb_terrains != None
+    assert e.nb_terrains != int()
+    assert e.nb_terrains != 9
+    assert e.nb_terrains == 6
 
 
 def test_get_nb_gymnasiums():
     e = Event(nb_gymnasiums=2)
 
-    assert e.get_nb_gymnasiums() != None
-    assert e.get_nb_gymnasiums() != int()
-    assert e.get_nb_gymnasiums() != 9
-    assert e.get_nb_gymnasiums() == 2
+    assert e.nb_gymnasiums != None
+    assert e.nb_gymnasiums != int()
+    assert e.nb_gymnasiums != 9
+    assert e.nb_gymnasiums == 2
 
 
 def test_get_nb_teams():
     e = Event(nb_teams=36)
 
-    assert e.get_nb_teams() != None
-    assert e.get_nb_teams() != int()
-    assert e.get_nb_teams() != 9
-    assert e.get_nb_teams() == 36
+    assert e.nb_teams != None
+    assert e.nb_teams != int()
+    assert e.nb_teams != 9
+    assert e.nb_teams == 36
 
 
 def test_get_night():
     e = Event()
 
-    assert e.get_night() != None
-    assert e.get_night() != True
-    assert e.get_night() == False
+    assert e.night != None
+    assert e.night != True
+    assert e.night == False
 
 
 def test_get_surface():
@@ -132,6 +132,6 @@ def test_get_website():
 def test_get_full():
     e = Event()
 
-    assert e.get_full() != None
-    assert e.get_full() != True
-    assert e.get_full() == False
+    assert e.full != None
+    assert e.full != True
+    assert e.full == False
