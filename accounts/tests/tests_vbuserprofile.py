@@ -19,17 +19,17 @@ def test_vbu_password():
     assert check_password({}, 'unknown', '') == None
 
     # Valid user with wrong password
-    assert vbu.get_user().check_password('incorrect') == False
+    assert vbu.user.check_password('incorrect') == False
 
     # Valid user with correct password
-    assert vbu.get_user().check_password('toto') == True
+    assert vbu.user.check_password('toto') == True
 
     # correct password, but user is inactive
     jd.is_active = False
-    assert vbu.get_user().check_password({}) == False
+    assert vbu.user.check_password({}) == False
 
     # Valid user with incorrect password
-    assert vbu.get_user().check_password({}) == False
+    assert vbu.user.check_password({}) == False
 
 
 @pytest.mark.django_db
@@ -37,7 +37,10 @@ def test_get_user():
     vbu = VBUserProfile.objects.create(
         user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'))
 
-    assert vbu.get_user() != None
+    assert vbu.get_username() != None
+    assert vbu.get_username() != str()
+    assert vbu.get_username() != "jdoe1"
+    assert vbu.get_username() == "jdoe"
 
 
 @pytest.mark.django_db
