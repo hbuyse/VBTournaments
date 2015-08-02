@@ -16,7 +16,6 @@ import json
 from .models import Tournament, Event
 from .forms import EventForm
 
-# Create your views here.
 
 
 def home(request):
@@ -82,25 +81,25 @@ def add_new_event(request):
 
 
             e = Event.objects.create(
-                vbuser=vbuser,
-                name=name,
-                nb_terrains=nb_terrains,
-                nb_gymnasiums=nb_gymnasiums,
-                nb_teams=nb_teams,
-                night=night,
-                surface=surface,
-                name_gymnasium=name_gymnasium,
-                nb_in_street=nb_in_street,
-                street=street,
-                city=city,
-                zip_code=zip_code,
-                region=region,
-                country=country,
-                latitude=latitude,
-                longitude=longitude,
-                description=description,
-                website=website,
-                full=full
+                _vbuser=vbuser,
+                _name=name,
+                _nb_terrains=nb_terrains,
+                _nb_gymnasiums=nb_gymnasiums,
+                _nb_teams=nb_teams,
+                _night=night,
+                _surface=surface,
+                _name_gymnasium=name_gymnasium,
+                _nb_in_street=nb_in_street,
+                _street=street,
+                _city=city,
+                _zip_code=zip_code,
+                _region=region,
+                _country=country,
+                _latitude=latitude,
+                _longitude=longitude,
+                _description=description,
+                _website=website,
+                _full=full
             )
 
             return HttpResponseRedirect(reverse('event_detail', kwargs={'pk': e.id}))

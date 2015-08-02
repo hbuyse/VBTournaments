@@ -20,8 +20,8 @@ class EventForm(forms.ModelForm):
 
         model = Event
 
-        fields = ['name', 'nb_terrains', 'nb_gymnasiums', 'nb_teams', 'night', 'surface', 'name_gymnasium',
-                  'nb_in_street', 'street', 'city', 'country', 'description', 'website']
+        fields = ['_name', '_nb_terrains', '_nb_gymnasiums', '_nb_teams', '_night', '_surface', '_name_gymnasium',
+                  '_nb_in_street', '_street', '_city', '_country', '_description', '_website']
 
         labels = {
             'city': 'Ville',

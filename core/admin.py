@@ -9,12 +9,12 @@ from .models import Event, Tournament
 
 class TournamentAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['event', 'date']}),
-        ('Format', {'fields': ['nb_players', 'sx_players']}),
-        ('Level', {'fields': ['hobby', 'departmental', 'regional', 'national', 'professional', 'kids']})
+        (None, {'fields': ['_event', '_date']}),
+        ('Format', {'fields': ['_nb_players', '_sx_players']}),
+        ('Level', {'fields': ['_hobby', '_departmental', '_regional', '_national', '_professional', '_kids']})
     ]
-    list_display = ('event', 'date', 'get_vbuser_username', 'get_vbuser_club', 'nb_players', 'sx_players')
-    list_filter = ['date']
+    list_display = ('_event', '_date', 'get_vbuser_username', 'get_vbuser_club', '_nb_players', '_sx_players')
+    list_filter = ['_date']
 
     def get_event_name(self, obj):
         """Get the name of the tournaments"""
@@ -34,11 +34,11 @@ class TournamentAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     # readonly_fields = ("vbuser",)
     fieldsets = [
-        (None,           {'fields': ['name', 'full', 'vbuserprofile', 'night', 'surface']}),
-        ('Informations', {'fields': ['nb_terrains', 'nb_gymnasiums', 'nb_teams', 'website', 'description']}),
-        ('Address',      {'fields': ['name_gymnasium', 'nb_in_street', 'street', 'zip_code', 'city', 'region', 'country']}),
+        (None,           {'fields': ['_name', '_full', '_vbuserprofile', '_night', '_surface']}),
+        ('Informations', {'fields': ['_nb_terrains', '_nb_gymnasiums', '_nb_teams', '_website', '_description']}),
+        ('Address',      {'fields': ['_name_gymnasium', '_nb_in_street', '_street', '_zip_code', '_city', '_region', '_country']}),
     ]
-    list_display = ('name', 'get_vbuser_username', 'nb_teams', 'nb_terrains', 'city', 'country')
+    list_display = ('_name', 'get_vbuser_username', '_nb_teams', '_nb_terrains', '_city', '_country')
 
     def get_vbuser_username(self, obj):
         """Get the login of the person who has registered the event"""

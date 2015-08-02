@@ -9,13 +9,13 @@ from .models import VBUserProfile
 
 class VBUserProfileAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['user']}),
-        ('User informations', {'fields': ['club', 'level', 'phone']}),
-        ('Share informations', {'fields': ['share_mail', 'share_phone']}),
-        ('Social informations', {'fields': ['facebook', 'twitter']}),
+        (None, {'fields': ['_user']}),
+        ('User informations', {'fields': ['_club', '_level', '_phone']}),
+        ('Share informations', {'fields': ['_share_mail', '_share_phone']}),
+        ('Social informations', {'fields': ['_facebook', '_twitter']}),
         ]
-    list_display=('get_username', 'get_email', 'club')
-    search_fields = ['user.username', 'user.first_name', 'user.last_name']
+    list_display=('get_username', 'get_email', '_club')
+    search_fields = ['_user.username', '_user.first_name', '_user.last_name']
 
     def get_username(self, obj):
         return obj.user.get_username()
