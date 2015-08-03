@@ -37,11 +37,11 @@ class EventDetailView(generic.DetailView):
     context_object_name = 'event'
 
 
-@login_required
+@login_required(login_url="/users/login")
 def add_new_event(request):
-    if request.method == 'GET':
-        form = EventForm()
-    elif request.method == 'POST':
+    form = EventForm()
+
+    if request.method == 'POST':
         form = EventForm(request.POST)
 
         print(json.dumps(request.POST, indent=4))
@@ -104,5 +104,4 @@ def add_new_event(request):
 
             return HttpResponseRedirect(reverse('event_detail', kwargs={'pk': e.id}))
 
-        print(form.errors)
     return render(request, 'core/event_form.html', {'form': form})
