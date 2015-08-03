@@ -56,6 +56,17 @@
                         GitHub
                     </a>
                 </li>
+                <li>
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'accounts:login' %}">
+                        Login
+                    </a>
+                {% else %}
+                    <a href="{% url 'accounts:logout' %}">
+                        Logout
+                    </a>
+                {% endif %}
+                </li>
             </ul>
         </div>
     </div>
