@@ -262,6 +262,7 @@ class Tournament(models.Model):
 
     _event = models.ForeignKey('core.Event', db_column='event', related_name='tournaments')
     _date = models.DateField(db_column='date', auto_now=False)
+    _starting_time = models.TimeField(db_column='time', auto_now=False, default='09:00')
 
     _nb_players = models.PositiveSmallIntegerField(db_column='nb_players',
                                                    choices=[
@@ -332,6 +333,14 @@ class Tournament(models.Model):
             raise models.ValidationError("The date of the tournament {} cannot be in the past!".format(self.event.name))
 
         self._date = val
+
+    @property
+    def starting_time(self):
+        return self._starting_time
+
+    @starting_time.setter
+    def starting_time(self, val):
+        self._starting_time = val
 
     @property
     def nb_players(self):
