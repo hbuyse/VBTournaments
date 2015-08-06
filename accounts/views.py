@@ -30,7 +30,7 @@ def vbuserprofile_view(request, username):
     u = User.objects.get(username=username)
     vbup = VBUserProfile.objects.get(_user=u)
 
-    return render_to_response('accounts/vbprofile_detail.html', {'object': vbup})
+    return render_to_response('accounts/vbprofile_detail.html', {'object': vbup}, context_instance=RequestContext(request))
 
 
 def login_user(request):
