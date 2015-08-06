@@ -127,6 +127,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+# The URL where requests are redirected for login, especially when using the login_required() decorator.
+LOGIN_URL = '/login'
+
 BOOTSTRAP3 = {
     # The URL to the jQuery JavaScript file
     'jquery_url': '//code.jquery.com/jquery.min.js',

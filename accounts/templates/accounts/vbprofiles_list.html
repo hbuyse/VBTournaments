@@ -21,7 +21,7 @@
                     <div class="panel panel-primary tournament">
                         <div class="panel-heading">
                             <div class="btn-group pull-right">
-                                <a href="{% url 'accounts:vbprofile_detail' p.id %}" class="btn btn-default btn-xs">Details</a>
+                                <a href="{% url 'accounts:vbprofile_detail' p.get_username %}" class="btn btn-default btn-xs">Details</a>
                             </div>
                             <h3 class="btn-block panel-title" style="line-height:25.5px;">{{ p.get_full_name }} ({{ p.get_username }})</h3>
                         </div>

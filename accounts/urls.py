@@ -25,7 +25,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.VBUserProfileListView.as_view(), name='vbprofiles_list'),
-    url(r'^(?P<pk>[0-9]+)$', views.VBUserProfileDetailView.as_view(), name='vbprofile_detail'),
-    url(r'^login/$', 'django.contrib.auth.views.login', name='login', kwargs={'template_name': 'accounts/login.html'}),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/'}),
+    url(r'^(?P<username>\w+)$', views.vbuserprofile_view, name='vbprofile_detail'),
 ]

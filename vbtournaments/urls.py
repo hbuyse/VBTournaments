@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('core.urls', namespace='core')),
     url(r'^users/', include('accounts.urls', namespace='accounts')),
+    url(r'^login$', 'accounts.views.login_user', name='login'),
+    url(r'^logout$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/'}),
 ]

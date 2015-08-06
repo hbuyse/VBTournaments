@@ -37,7 +37,7 @@ class EventDetailView(generic.DetailView):
     context_object_name = 'event'
 
 
-@login_required(login_url="/users/login")
+@login_required(login_url="/login")
 def add_new_event(request):
     form = EventForm()
 

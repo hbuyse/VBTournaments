@@ -52,7 +52,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                 {% if not user.is_authenticated %}
-                    <a href="{% url 'accounts:login' %}">
+                    <a href="{% url 'login' %}?next={{request.path}}">
                         Se connecter
                     </a>
                 {% else %}
@@ -69,7 +69,7 @@
                                 </li>
                                 <li role="separator" class="divider"></li>
                                 <li>
-                                    <a href="{% url 'accounts:logout' %}">
+                                    <a href="{% url 'logout' %}">
                                         Déconnexion
                                     </a>
                                 </li>
