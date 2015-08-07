@@ -15,6 +15,7 @@ import json
 
 from .models import Tournament, Event
 from .forms import EventForm
+from vbtournaments import settings
 
 
 
@@ -60,7 +61,7 @@ def add_new_event(request):
             city = form.cleaned_data['city']
             country = form.cleaned_data['country']
 
-            geolocator = GoogleV3(api_key="AIzaSyD8HsL7rc6pC6Oo9usD_mCggAq60HdiD7M")
+            geolocator = GoogleV3(api_key=settings.GOOGLE_API_KEY)
             locations = geolocator.geocode("{nb_in_street} {street}, {city}, {country}".format(nb_in_street=nb_in_street,
                                                                                                street=street,
                                                                                                city=city,

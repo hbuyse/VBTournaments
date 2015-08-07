@@ -19,6 +19,7 @@ assign the default database to another configuration later in your code.
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
+import configparser
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -26,7 +27,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q5yate+(ep8&vuch6)ifj+p5jk4ukfkip4w8o)qc9k-f-opzhj'
+cfg = configparser.ConfigParser()
+cfg.read('./config.cfg')
+SECRET_KEY = cfg.get('keys', 'SECRET_KEY')
+GOOGLE_API_KEY = cfg.get('keys', 'GOOGLE_API_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
