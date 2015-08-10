@@ -50,7 +50,7 @@ def login_user(request):
                 login(request, user)
 
                 # Redirect to the 'next' page if 'next' exists (always exists)
-                return HttpResponseRedirect(request.GET.get('next'))
+                return HttpResponseRedirect(request.GET.get('next') or reverse('core:home'))
 
             else:
                 state = "Votre compte est désactivé. Contactez un administrateur du site."
