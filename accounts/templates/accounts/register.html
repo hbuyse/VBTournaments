@@ -11,49 +11,32 @@
     </ul>
 </div>
 
+{% if user.is_authenticated %}
+<div class="bs-component">
+    <div class="page-header">
+        <h1 id="type">Comment vous dire...?</h1>
+    </div>
+</div>
+
+<div class="bs-component">
+    <h4>Vous êtes déjà identifié. Vous ne pouvez donc pas créer de nouveau compte.</h4>
+    <h4>Si vous voulez absolument créer un autre compte, déconnectez-vous.</h4>
+</div>
+
+{% else %}
+
 <div class="bs-component">
     <div class="page-header">
         <h1 id="type">Création de compte</h1>
     </div>
 </div>
 
-
 <div class="bs-component">
-    {% if not state|length_is:"0" %}
-    <div class="alert alert-danger" role="alert">
-        <strong>Attention!</strong> {{ state }}
-    </div>
-    {% endif %}
-
     <form class="form-horizontal" method="post">
         {% csrf_token %}
 
         <div class="form-group col-md-12">
-            <label class="control-label" for="id_username">Nom d'utilisateur</label>
-            <div class=" ">
-                <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-position: right center; cursor: auto;" class=" form-control" id="id_username" maxlength="100" name="username" type="text" placeholder="Nom d'utilisateur">
-            </div>
-        </div>
-
-        <div class="form-group col-md-12">
-            <label class="control-label" for="id_username">Courrier électronique</label>
-            <div class=" ">
-                <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-position: right center; cursor: auto;" class=" form-control" id="id_username" maxlength="100" name="email" type="text" placeholder="Courrier électronique">
-            </div>
-        </div>
-
-        <div class="form-group col-md-12">
-            <label class="control-label" for="id_password">Mot de passe</label>
-            <div class=" ">
-                <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-position: right center; cursor: auto;" class=" form-control" id="id_password" maxlength="100" name="password1" type="password" placeholder="Mot de passe">
-            </div>
-        </div>
-
-        <div class="form-group col-md-12">
-            <label class="control-label" for="id_password">Vérification du mot de passe</label>
-            <div class=" ">
-                <input style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-position: right center; cursor: auto;" class=" form-control" id="id_password" maxlength="100" name="password2" type="password" placeholder="Vérification du mot de passe">
-            </div>
+            {{ form|bootstrap }}
         </div>
 
         <div class="form-group">
@@ -64,6 +47,6 @@
         </div>
     </form>
 </div>
-
+{% endif %}
 
 {% endblock %}

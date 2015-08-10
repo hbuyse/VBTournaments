@@ -14,8 +14,10 @@ from django.shortcuts import get_object_or_404, render, render_to_response
 from django.template import RequestContext
 from django.views import generic
 from django.core.urlresolvers import reverse
+from django import forms
 
 from .models import VBUserProfile
+from .forms import UserForm
 
 
 class VBUserProfileListView(generic.ListView):
@@ -62,29 +64,25 @@ def login_user(request):
 
 
 def register(request):
-    state = str()
-    username = str()
-    email = str()
-    password1 = str()
-    password2 = str()
+    uf = UserForm()
 
     if request.POST:
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password1 = request.POST.get('password1')
-        password2 = request.POST.get('password2')
+        uf = UserForm(request.POST)
 
-        if password1 == password2:
-            try:
-                user = User.objects.create_user(username=username,
-                                                email=email,
-                                                password=password1)
+        if uf.is_valid():
+            # No need to check the integrity of username
+            # Already checked with the clean_username method in accounts.forms
+            user = User.objects.create_user(username=uf.cleaned_data['username'],
+                                            email=uf.cleaned_data['email'],
+                                            password=uf.cleaned_data['password1'],
+                                            first_name=uf.cleaned_data['first_name'],
+                                            last_name=uf.cleaned_data['last_name'])
 
-                # Redirect to the 'next' page if 'next' exists (always exists)
-                return HttpResponseRedirect("/")
-            except IntegrityError as e:
-                state = "Le nom d'utilisateur {} est déjà pris.".format(username)
-        else:
-            state = "Les mots de passe ne sont pas identiques."
+            VBUserProfile.objects.create(_user=user,
+                                         _share_mail=False,
+                                         _share_phone=False)
 
-    return render_to_response('accounts/register.html', {'state': state, 'username': username, 'email': email}, context_instance=RequestContext(request))
+            # Redirect to the 'next' page if 'next' exists (always exists)
+            return HttpResponseRedirect(request.GET.get('next') or reverse('core:home'))
+
+    return render_to_response('accounts/register.html', {'form': uf}, context_instance=RequestContext(request))
