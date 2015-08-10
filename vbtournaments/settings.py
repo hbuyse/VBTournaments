@@ -27,10 +27,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-cfg = configparser.ConfigParser()
-cfg.read('./config.cfg')
-SECRET_KEY = cfg.get('keys', 'SECRET_KEY')
-GOOGLE_API_KEY = cfg.get('keys', 'GOOGLE_API_KEY')
+if 'TRAVIS' in os.environ:
+    # Using old keys for Travis
+    SECRET_KEY = 'q5yate+(ep8&vuch6)ifj+p5jk4ukfkip4w8o)qc9k-f-opzhj'
+    GOOGLE_API_KEY = 'AIzaSyD8HsL7rc6pC6Oo9usD_mCggAq60HdiD7M'
+else:
+    cfg = configparser.ConfigParser()
+    cfg.read('./config.cfg')
+    SECRET_KEY = cfg.get('keys', 'SECRET_KEY')
+    GOOGLE_API_KEY = cfg.get('keys', 'GOOGLE_API_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
