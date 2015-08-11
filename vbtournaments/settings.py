@@ -17,9 +17,11 @@ assign the default database to another configuration later in your code.
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-import dj_database_url
 import configparser
+import os
+
+import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -33,10 +35,14 @@ if 'TRAVIS' in os.environ:
     GOOGLE_API_KEY = 'AIzaSyD8HsL7rc6pC6Oo9usD_mCggAq60HdiD7M'
 else:
     cfg = configparser.ConfigParser()
-    cfg.read('./config.cfg')
+    cfg.read('./config/config.cfg')
     SECRET_KEY = cfg.get('keys', 'SECRET_KEY')
     GOOGLE_API_KEY = cfg.get('keys', 'GOOGLE_API_KEY')
-
+    EMAIL_HOST = cfg.get('email', 'EMAIL_HOST')
+    EMAIL_HOST_USER = cfg.get('email', 'EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = cfg.get('email', 'EMAIL_HOST_PASSWORD')
+    EMAIL_PORT = cfg.getint('email', 'EMAIL_PORT')
+    EMAIL_USE_TLS = cfg.getboolean('email', 'EMAIL_USE_TLS')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
