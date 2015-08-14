@@ -34,11 +34,11 @@
 
 <div class="bs-component">
     {% if not activation_expired and not already_active %}
-    <h4 id="type">Bienvenue sur VBTournaments</h4>
+    <p>Bienvenue sur VBTournaments</p>
     {% elif activation_expired %}
-    <h4 id="type">T'as eu deux jours pour activer ton compte... Comment as-tu fait?!</h4>
+    <p>T'as eu deux jours pour activer ton compte... Comment as-tu fait?!</p>
     {% elif already_active %}
-    <h4 id="type">T'as pas eu comme une impression de déjà-vu en cliquant sur le lien dans le mail?!</h4>
+    <p>T'as pas eu comme une impression de déjà-vu en cliquant sur le lien dans le mail?!</p>
     {% endif %}
 </div>
 

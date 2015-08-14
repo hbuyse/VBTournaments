@@ -55,10 +55,10 @@ class UserForm(forms.ModelForm):
         data = self.cleaned_data
         print(data)
         if User.objects.filter(username=data['username']).exists():
-            raise ValidationError({'username': ["Le nom d'utilisateur {} est déjà pris."]})
+            raise ValidationError({'username': ["Le nom d'utilisateur {} est déjà pris.".format(data['username'])]})
 
         if User.objects.filter(email=data['email']).exists():
-            raise ValidationError({'email': ["Le courrier électronique {} est déjà utilisé."]})
+            raise ValidationError({'email': ["Le courrier électronique {} est déjà utilisé.".format(data['email'])]})
 
         if not data['password2']:
             raise ValidationError({'password2': ["Vous devez confirmer votre mot de passe."]})

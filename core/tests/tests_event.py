@@ -4,11 +4,14 @@ __author__ = 'Henri Buyse'
 
 
 import pytest
-from core.models import Event, Tournament
-from accounts.models import VBUserProfile
+import datetime
 
 from django.contrib.auth.models import User
 
+from accounts.models import VBUserProfile
+from core.models import Event, Tournament
+
+key_expires = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=2), "%Y-%m-%d %H:%M:%S")
 
 
 def test_get_all_tournaments_related():
@@ -17,7 +20,8 @@ def test_get_all_tournaments_related():
 
 @pytest.mark.django_db
 def test_get_vbuserprofile():
-    vbu = VBUserProfile.objects.create(user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'))
+    vbu = VBUserProfile.objects.create(user=User.objects.create_user(
+        username='jdoe', email='jdoe@jdoe.fr', password='toto'), key_expires=key_expires)
     e = Event.objects.create(name="VolleyBall Day",
                              nb_terrains=1,
                              nb_gymnasiums=1,
@@ -30,7 +34,7 @@ def test_get_vbuserprofile():
     assert e.vbuserprofile != None
 
     jdoe1 = User.objects.create_user(username="jdoe1")
-    assert e.vbuserprofile != VBUserProfile.objects.create(user=jdoe1)
+    assert e.vbuserprofile != VBUserProfile.objects.create(user=jdoe1, key_expires=key_expires)
     assert e.vbuserprofile == vbu
 
 

@@ -4,16 +4,21 @@ __author__ = 'Henri Buyse'
 
 
 import pytest
-from accounts.models import VBUserProfile
+import datetime
 
 from django.contrib.auth.handlers.modwsgi import check_password
 from django.contrib.auth.models import User
 
+from accounts.models import VBUserProfile
+
+
+key_expires = datetime.datetime.strftime(datetime.datetime.now() + datetime.timedelta(days=2), "%Y-%m-%d %H:%M:%S")
+
 
 @pytest.mark.django_db
 def test_vbu_password():
-    jd = user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto')
-    vbu = VBUserProfile.objects.create(user=jd)
+    jd = user = User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto')
+    vbu = VBUserProfile.objects.create(user=jd, key_expires=key_expires)
 
     # User not in database
     assert check_password({}, 'unknown', '') == None
@@ -35,7 +40,7 @@ def test_vbu_password():
 @pytest.mark.django_db
 def test_get_user():
     vbu = VBUserProfile.objects.create(
-        user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'))
+        user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'), key_expires=key_expires)
 
     assert vbu.get_username() != None
     assert vbu.get_username() != str()
@@ -46,7 +51,7 @@ def test_get_user():
 @pytest.mark.django_db
 def test_get_username():
     vbu = VBUserProfile.objects.create(
-        user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'))
+        user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr', password='toto'), key_expires=key_expires)
 
     assert vbu.get_username() != None
     assert vbu.get_username() != ''
@@ -55,7 +60,8 @@ def test_get_username():
 
 @pytest.mark.django_db
 def test_get_full_name():
-    vbu = VBUserProfile.objects.create(user=User.objects.create_user(username='jdoe', first_name='John', last_name='Doe'))
+    vbu = VBUserProfile.objects.create(user=User.objects.create_user(
+        username='jdoe', first_name='John', last_name='Doe'), key_expires=key_expires)
 
     assert vbu.get_full_name() != None
     assert vbu.get_full_name() != ''
@@ -66,7 +72,8 @@ def test_get_full_name():
 
 @pytest.mark.django_db
 def test_get_first_name():
-    vbu = VBUserProfile.objects.create(user=User.objects.create_user(username='jdoe', first_name='John'))
+    vbu = VBUserProfile.objects.create(
+        user=User.objects.create_user(username='jdoe', first_name='John'), key_expires=key_expires)
 
     assert vbu.get_first_name() != None
     assert vbu.get_first_name() != ''
@@ -76,7 +83,7 @@ def test_get_first_name():
 
 @pytest.mark.django_db
 def test_get_last_name():
-    vbu = VBUserProfile.objects.create(user=User.objects.create_user(username='jdoe', last_name='Doe'))
+    vbu = VBUserProfile.objects.create(user=User.objects.create_user(username='jdoe', last_name='Doe'), key_expires=key_expires)
 
     assert vbu.get_last_name() != None
     assert vbu.get_last_name() != ''
@@ -86,7 +93,8 @@ def test_get_last_name():
 
 @pytest.mark.django_db
 def test_get_email():
-    vbu = VBUserProfile.objects.create(user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr'))
+    vbu = VBUserProfile.objects.create(
+        user=User.objects.create_user(username='jdoe', email='jdoe@jdoe.fr'), key_expires=key_expires)
 
     assert vbu.get_email() != None
     assert vbu.get_email() != ''

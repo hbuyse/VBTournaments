@@ -31,11 +31,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 if 'TRAVIS' in os.environ:
     # Using old keys for Travis
+    FQDN = 'vbtournaments.fr'
     SECRET_KEY = 'q5yate+(ep8&vuch6)ifj+p5jk4ukfkip4w8o)qc9k-f-opzhj'
     GOOGLE_API_KEY = 'AIzaSyD8HsL7rc6pC6Oo9usD_mCggAq60HdiD7M'
 else:
     cfg = configparser.ConfigParser()
     cfg.read('./config/config.cfg')
+    FQDN = cfg.get('website', 'fqdn')
     SECRET_KEY = cfg.get('keys', 'SECRET_KEY')
     GOOGLE_API_KEY = cfg.get('keys', 'GOOGLE_API_KEY')
     EMAIL_HOST = cfg.get('email', 'EMAIL_HOST')
@@ -43,7 +45,6 @@ else:
     EMAIL_HOST_PASSWORD = cfg.get('email', 'EMAIL_HOST_PASSWORD')
     EMAIL_PORT = cfg.getint('email', 'EMAIL_PORT')
     EMAIL_USE_TLS = cfg.getboolean('email', 'EMAIL_USE_TLS')
-    FQDN = cfg.get('website', 'fqdn')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
