@@ -1,57 +1,57 @@
 [
     {
-        "pk": 1,
         "model": "auth.user",
         "fields": {
-            "groups": [],
-            "is_active": true,
+            "date_joined": "2015-08-02T21:49:47Z",
             "last_name": "Buyse",
             "user_permissions": [],
+            "first_name": "Henri",
             "username": "hbuyse",
-            "date_joined": "2015-08-02T21:49:47Z",
+            "groups": [],
             "password": "pbkdf2_sha256$20000$utpb7CHtskTm$Zz6qfZRc4cLrDMpYYX6beRUQUQPCz7GgOJHSVw5yHGQ=",
+            "last_login": "2015-08-14T20:29:02.991Z",
+            "is_staff": true,
             "is_superuser": true,
             "email": "henri.buyse@gmail.com",
-            "last_login": "2015-08-14T20:29:02.991Z",
-            "first_name": "Henri",
-            "is_staff": true
-        }
+            "is_active": true
+        },
+        "pk": 1
     },
     {
-        "pk": 2,
         "model": "auth.user",
         "fields": {
-            "groups": [],
-            "is_active": true,
+            "date_joined": "2015-08-14T20:29:22Z",
             "last_name": "Rehcuob",
             "user_permissions": [],
+            "first_name": "S\u00e9b",
             "username": "srehcuob",
-            "date_joined": "2015-08-14T20:29:22Z",
+            "groups": [],
             "password": "pbkdf2_sha256$20000$RwUgPhpPuuTS$6vrW7qWSu0T/JxJTdhkOztemepARWm5mnWXKaVO0shs=",
+            "last_login": "2015-08-14T21:12:37Z",
+            "is_staff": false,
             "is_superuser": false,
             "email": "srehcuob@example.fr",
-            "last_login": null,
-            "first_name": "S\u00e9b",
-            "is_staff": false
-        }
+            "is_active": true
+        },
+        "pk": 2
     },
     {
-        "pk": 3,
         "model": "auth.user",
         "fields": {
-            "groups": [],
-            "is_active": true,
+            "date_joined": "2015-08-14T20:30:26Z",
             "last_name": "Ydot",
             "user_permissions": [],
+            "first_name": "Joy",
             "username": "jydot",
-            "date_joined": "2015-08-14T20:30:26Z",
+            "groups": [],
             "password": "pbkdf2_sha256$20000$WLQ0ZsQu6Wmp$boY/iwjnaiUIxlmBUmqyjPBGz0zQdnZCakLFsvlalnI=",
+            "last_login": "2015-08-14T21:12:32Z",
+            "is_staff": false,
             "is_superuser": false,
             "email": "jydot@example.com",
-            "last_login": null,
-            "first_name": "Joy",
-            "is_staff": false
-        }
+            "is_active": true
+        },
+        "pk": 3
     },
     {
         "pk": 1,
