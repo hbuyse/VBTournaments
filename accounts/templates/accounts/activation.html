@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load bootstrap %}
+
+<div class="bs-component">
+    <ul class="breadcrumb">
+        <li><a href="{% url 'core:home' %}">Accueil</a></li>
+        <li><a href="{% url 'register' %}">Création de compte</a></li>
+        {% if not activation_expired and not already_active %}
+        <li class="active">Compte activé</li>
+        {% elif activation_expired %}
+        <li class="active">Lien d'activation expiré</li>
+        {% elif already_active %}
+        <li class="active">Compte déjà actif</li>
+        {% endif %}
+
+    </ul>
+</div>
+
+<div class="bs-component">
+    <div class="page-header">
+        {% if not activation_expired and not already_active %}
+        <h1 id="type">Compte activé</h1>
+        {% elif activation_expired %}
+        <h1 id="type">Lien d'activation expiré</h1>
+        {% elif already_active %}
+        <h1 id="type">Compte déjà actif</h1>
+        {% endif %}
+    </div>
+</div>
+
+
+<div class="bs-component">
+    {% if not activation_expired and not already_active %}
+    <h4 id="type">Bienvenue sur VBTournaments</h4>
+    {% elif activation_expired %}
+    <h4 id="type">T'as eu deux jours pour activer ton compte... Comment as-tu fait?!</h4>
+    {% elif already_active %}
+    <h4 id="type">T'as pas eu comme une impression de déjà-vu en cliquant sur le lien dans le mail?!</h4>
+    {% endif %}
+</div>
+
+
+{% endblock %}

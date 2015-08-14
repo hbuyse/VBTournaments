@@ -33,8 +33,10 @@ class VBUserProfile(models.Model):
 
     phone_validator = re.compile('^((\+|00)33\s?|0)[12345679](\s?\d{2}){4}$')
 
+    # User stuff
     _user = models.OneToOneField(User)
 
+    # Volley-ball stuff
     _club = models.CharField(db_column='club',
                              max_length=100,
                              blank=True)
@@ -42,21 +44,27 @@ class VBUserProfile(models.Model):
                               max_length=14,
                               blank=False,
                               choices=LEVEL_CHOICES)
+
+    # Want or not to share your email and phone number?
     _phone = models.CharField(db_column='phone',
                               max_length=100,
                               blank=True)
-
     _share_mail = models.BooleanField(db_column='share_mail',
                                       default=True)
     _share_phone = models.BooleanField(db_column='share_phone',
                                        default=False)
 
+    # Username on famous social networks
     _facebook = models.CharField(db_column='facebook',
                                  max_length=100,
                                  blank=True)
     _twitter = models.CharField(db_column='twitter',
                                 max_length=100,
                                 blank=True)
+
+    # Email activation stuff
+    _activation_key = models.CharField(max_length=40)
+    _key_expires = models.DateTimeField()
 
     def __str__(self):
         return "{0} <{1}>".format(self.get_username(), self.get_email())
@@ -170,3 +178,21 @@ class VBUserProfile(models.Model):
     @twitter.setter
     def twitter(self, val):
         self._twitter = val
+
+
+    @property
+    def activation_key(self):
+        return self._activation_key
+
+    @activation_key.setter
+    def activation_key(self, val):
+        self._activation_key = val
+
+
+    @property
+    def key_expires(self):
+        return self._key_expires
+
+    @key_expires.setter
+    def key_expires(self, val):
+        self._key_expires = val

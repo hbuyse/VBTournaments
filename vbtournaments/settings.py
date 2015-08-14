@@ -43,6 +43,7 @@ else:
     EMAIL_HOST_PASSWORD = cfg.get('email', 'EMAIL_HOST_PASSWORD')
     EMAIL_PORT = cfg.getint('email', 'EMAIL_PORT')
     EMAIL_USE_TLS = cfg.getboolean('email', 'EMAIL_USE_TLS')
+    FQDN = cfg.get('website', 'fqdn')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -138,6 +139,10 @@ ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
+
+# Media asset configuration
+MEDIA_ROOT = BASE_DIR + "/media/"
+MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
