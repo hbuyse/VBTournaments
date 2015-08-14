@@ -1,0 +1,104 @@
+[
+    {
+        "pk": 1,
+        "model": "auth.user",
+        "fields": {
+            "groups": [],
+            "is_active": true,
+            "last_name": "Buyse",
+            "user_permissions": [],
+            "username": "hbuyse",
+            "date_joined": "2015-08-02T21:49:47Z",
+            "password": "pbkdf2_sha256$20000$utpb7CHtskTm$Zz6qfZRc4cLrDMpYYX6beRUQUQPCz7GgOJHSVw5yHGQ=",
+            "is_superuser": true,
+            "email": "henri.buyse@gmail.com",
+            "last_login": "2015-08-14T20:29:02.991Z",
+            "first_name": "Henri",
+            "is_staff": true
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.user",
+        "fields": {
+            "groups": [],
+            "is_active": true,
+            "last_name": "Rehcuob",
+            "user_permissions": [],
+            "username": "srehcuob",
+            "date_joined": "2015-08-14T20:29:22Z",
+            "password": "pbkdf2_sha256$20000$RwUgPhpPuuTS$6vrW7qWSu0T/JxJTdhkOztemepARWm5mnWXKaVO0shs=",
+            "is_superuser": false,
+            "email": "srehcuob@example.fr",
+            "last_login": null,
+            "first_name": "S\u00e9b",
+            "is_staff": false
+        }
+    },
+    {
+        "pk": 3,
+        "model": "auth.user",
+        "fields": {
+            "groups": [],
+            "is_active": true,
+            "last_name": "Ydot",
+            "user_permissions": [],
+            "username": "jydot",
+            "date_joined": "2015-08-14T20:30:26Z",
+            "password": "pbkdf2_sha256$20000$WLQ0ZsQu6Wmp$boY/iwjnaiUIxlmBUmqyjPBGz0zQdnZCakLFsvlalnI=",
+            "is_superuser": false,
+            "email": "jydot@example.com",
+            "last_login": null,
+            "first_name": "Joy",
+            "is_staff": false
+        }
+    },
+    {
+        "pk": 1,
+        "model": "accounts.vbuserprofile",
+        "fields": {
+            "_twitter": "HBuyse",
+            "_level": "hobby",
+            "_activation_key": "0",
+            "_club": "VCN",
+            "_user": 1,
+            "_share_mail": true,
+            "_key_expires": "2015-08-14T18:33:49.928Z",
+            "_share_phone": true,
+            "_facebook": "hbuyse",
+            "_phone": "+33679994286"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "accounts.vbuserprofile",
+        "fields": {
+            "_twitter": "",
+            "_level": "hobby",
+            "_activation_key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "_club": "test",
+            "_user": 3,
+            "_share_mail": true,
+            "_key_expires": "2015-08-14T18:33:11Z",
+            "_share_phone": false,
+            "_facebook": "jydot",
+            "_phone": ""
+        }
+    },
+    {
+        "pk": 3,
+        "model": "accounts.vbuserprofile",
+        "fields": {
+            "_twitter": "srehcuob",
+            "_level": "national_1",
+            "_activation_key": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "_club": "VCN",
+            "_user": 2,
+            "_share_mail": false,
+            "_key_expires": "2015-08-14T18:34:33Z",
+            "_share_phone": true,
+            "_facebook": "",
+            "_phone": "+33000000000"
+        }
+    }
+]

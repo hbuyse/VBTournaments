@@ -1,0 +1,210 @@
+[
+    {
+        "pk": 1,
+        "model": "core.event",
+        "fields": {
+            "_vbuserprofile": 1,
+            "_nb_gymnasiums": 1,
+            "_name_gymnasium": "Gymnase Watteau",
+            "_full": true,
+            "_longitude": 0.0,
+            "_night": true,
+            "_nb_teams": 18,
+            "_city": "Nogent-Sur-Marne",
+            "_zip_code": "94130",
+            "_name": "Tournoi du jour",
+            "_website": "",
+            "_street": "Rue Lequesne",
+            "_region": "Val-De-Marne",
+            "_country": "France",
+            "_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu sollicitudin orci. Vivamus hendrerit et magna ac pharetra. Aliquam lobortis felis vel est blandit, ut blandit velit sagittis. Aenean et felis tincidunt, tincidunt enim nec, facilisis nunc. Curabitur tristique varius elit, eu tristique odio interdum non. Nullam vestibulum, leo ac rhoncus sagittis, purus sapien euismod est, eget ullamcorper purus sem eget augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent hendrerit arcu vitae justo lacinia, a volutpat nibh tincidunt.\r\n\r\nSuspendisse ac odio eget turpis tempor laoreet. Praesent nec laoreet ipsum. Aenean ex dolor, sollicitudin ut rhoncus vel, varius sed ante. Praesent tincidunt est justo, at luctus lorem rhoncus non. Donec id augue nulla. Quisque ac quam vestibulum, dapibus nunc quis, tristique sem. Ut malesuada massa id porttitor tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla mi ante, ut elementum nunc interdum vel. Nam non lorem sit amet lacus congue porta sit amet eu est. Morbi id ultrices lacus. Cras bibendum nibh eu ullamcorper fringilla. Vestibulum vulputate non nunc non fermentum. Aliquam a feugiat nibh.\r\n\r\nNulla porttitor augue non dictum varius. Praesent vestibulum, velit nec pulvinar consequat, metus tellus tempus libero, nec lobortis magna lorem et ante. In sit amet molestie lacus. Nunc sollicitudin cursus iaculis. Donec posuere vehicula lacus. Sed ac pulvinar nibh. Suspendisse at eleifend lectus, rhoncus auctor augue. Sed venenatis nisl vitae leo bibendum sollicitudin. Vivamus id purus quis ligula pulvinar sollicitudin in a lacus. Nulla facilisi. Vivamus gravida, justo eget pulvinar vulputate, purus diam condimentum purus, at volutpat ante quam eu odio. Praesent sagittis elit in augue fermentum, id gravida sem dictum. Maecenas quis mi non ipsum porttitor tincidunt volutpat vel dui.\r\n\r\nSed vulputate, sem eget sagittis hendrerit, orci lacus placerat urna, quis venenatis lectus urna sit amet mauris. Quisque vel massa tortor. Vivamus fermentum, felis ut dignissim congue, leo metus faucibus nibh, non gravida quam risus id ligula. Integer quis lectus urna. Etiam semper dui in orci elementum sollicitudin. Sed lobortis massa eleifend tortor pretium, et luctus lectus maximus. Integer rutrum pretium ligula, quis bibendum libero tincidunt venenatis. Proin augue purus, iaculis nec rhoncus ut, tincidunt nec odio.\r\n\r\nQuisque id accumsan orci, id tristique velit. Aliquam erat volutpat. Nam sollicitudin justo id justo aliquet fermentum. Sed blandit velit non elementum suscipit. Suspendisse nec condimentum sem, elementum sollicitudin mauris. Vivamus a lectus vel lacus condimentum feugiat sed id nibh. Nullam elit diam, vulputate non massa non, consequat hendrerit massa. Nullam bibendum viverra sem, ut cursus leo rhoncus sed. Nam efficitur molestie elit, a laoreet sapien laoreet eget. Donec urna leo, sodales nec scelerisque eu, rutrum gravida diam. Nullam a placerat tortor, eu fringilla lorem. Aenean et nisi id felis condimentum molestie. Vivamus facilisis orci ipsum, quis interdum nunc sodales ut.\r\n\r\nSuspendisse potenti. Suspendisse auctor bibendum turpis et consequat. Cras mauris elit, tincidunt ac dui consequat, aliquam auctor nunc. Sed luctus hendrerit metus quis efficitur. Sed in nisi justo. Integer et ante sit amet quam viverra ornare sed interdum ligula. In vitae lorem vitae lorem sollicitudin iaculis. Duis posuere, urna sed dapibus lacinia, est sapien consectetur quam, eu dictum dui ex in quam. Sed et tortor ut quam elementum semper et ac orci. Ut nulla justo, tristique ac ornare et, tincidunt ut sem. Maecenas quis sollicitudin elit. Vivamus in posuere eros. Donec efficitur cursus suscipit.\r\n\r\nPellentesque pellentesque vitae erat id euismod. Duis sit amet ante quam. In vel ante non quam varius rhoncus vel eu quam. Etiam at quam tempus, bibendum odio sit amet, fringilla sapien. Ut ornare quam sit amet arcu auctor, eget lacinia augue vehicula. Etiam dui dolor, vehicula non blandit eget, tincidunt at quam. Proin auctor, justo sit amet volutpat rutrum, elit erat elementum nisl, sit amet tempus sem elit et est. Cras sit amet diam sagittis, dignissim est et, convallis neque. ",
+            "_nb_terrains": 3,
+            "_surface": "indoor",
+            "_latitude": 0.0,
+            "_nb_in_street": "37"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "core.event",
+        "fields": {
+            "_vbuserprofile": 1,
+            "_nb_gymnasiums": 8,
+            "_name_gymnasium": "",
+            "_full": false,
+            "_longitude": 0.0,
+            "_night": false,
+            "_nb_teams": 72,
+            "_city": "Paris",
+            "_zip_code": "75008",
+            "_name": "Jour de la semaine",
+            "_website": "",
+            "_street": "Rue des Champs-Elysees",
+            "_region": "",
+            "_country": "France",
+            "_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu sollicitudin orci. Vivamus hendrerit et magna ac pharetra. Aliquam lobortis felis vel est blandit, ut blandit velit sagittis. Aenean et felis tincidunt, tincidunt enim nec, facilisis nunc. Curabitur tristique varius elit, eu tristique odio interdum non. Nullam vestibulum, leo ac rhoncus sagittis, purus sapien euismod est, eget ullamcorper purus sem eget augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent hendrerit arcu vitae justo lacinia, a volutpat nibh tincidunt.\r\n\r\nSuspendisse ac odio eget turpis tempor laoreet. Praesent nec laoreet ipsum. Aenean ex dolor, sollicitudin ut rhoncus vel, varius sed ante. Praesent tincidunt est justo, at luctus lorem rhoncus non. Donec id augue nulla. Quisque ac quam vestibulum, dapibus nunc quis, tristique sem. Ut malesuada massa id porttitor tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla mi ante, ut elementum nunc interdum vel. Nam non lorem sit amet lacus congue porta sit amet eu est. Morbi id ultrices lacus. Cras bibendum nibh eu ullamcorper fringilla. Vestibulum vulputate non nunc non fermentum. Aliquam a feugiat nibh.\r\n\r\nNulla porttitor augue non dictum varius. Praesent vestibulum, velit nec pulvinar consequat, metus tellus tempus libero, nec lobortis magna lorem et ante. In sit amet molestie lacus. Nunc sollicitudin cursus iaculis. Donec posuere vehicula lacus. Sed ac pulvinar nibh. Suspendisse at eleifend lectus, rhoncus auctor augue. Sed venenatis nisl vitae leo bibendum sollicitudin. Vivamus id purus quis ligula pulvinar sollicitudin in a lacus. Nulla facilisi. Vivamus gravida, justo eget pulvinar vulputate, purus diam condimentum purus, at volutpat ante quam eu odio. Praesent sagittis elit in augue fermentum, id gravida sem dictum. Maecenas quis mi non ipsum porttitor tincidunt volutpat vel dui.\r\n\r\nSed vulputate, sem eget sagittis hendrerit, orci lacus placerat urna, quis venenatis lectus urna sit amet mauris. Quisque vel massa tortor. Vivamus fermentum, felis ut dignissim congue, leo metus faucibus nibh, non gravida quam risus id ligula. Integer quis lectus urna. Etiam semper dui in orci elementum sollicitudin. Sed lobortis massa eleifend tortor pretium, et luctus lectus maximus. Integer rutrum pretium ligula, quis bibendum libero tincidunt venenatis. Proin augue purus, iaculis nec rhoncus ut, tincidunt nec odio.\r\n\r\nQuisque id accumsan orci, id tristique velit. Aliquam erat volutpat. Nam sollicitudin justo id justo aliquet fermentum. Sed blandit velit non elementum suscipit. Suspendisse nec condimentum sem, elementum sollicitudin mauris. Vivamus a lectus vel lacus condimentum feugiat sed id nibh. Nullam elit diam, vulputate non massa non, consequat hendrerit massa. Nullam bibendum viverra sem, ut cursus leo rhoncus sed. Nam efficitur molestie elit, a laoreet sapien laoreet eget. Donec urna leo, sodales nec scelerisque eu, rutrum gravida diam. Nullam a placerat tortor, eu fringilla lorem. Aenean et nisi id felis condimentum molestie. Vivamus facilisis orci ipsum, quis interdum nunc sodales ut.\r\n\r\nSuspendisse potenti. Suspendisse auctor bibendum turpis et consequat. Cras mauris elit, tincidunt ac dui consequat, aliquam auctor nunc. Sed luctus hendrerit metus quis efficitur. Sed in nisi justo. Integer et ante sit amet quam viverra ornare sed interdum ligula. In vitae lorem vitae lorem sollicitudin iaculis. Duis posuere, urna sed dapibus lacinia, est sapien consectetur quam, eu dictum dui ex in quam. Sed et tortor ut quam elementum semper et ac orci. Ut nulla justo, tristique ac ornare et, tincidunt ut sem. Maecenas quis sollicitudin elit. Vivamus in posuere eros. Donec efficitur cursus suscipit.\r\n\r\nPellentesque pellentesque vitae erat id euismod. Duis sit amet ante quam. In vel ante non quam varius rhoncus vel eu quam. Etiam at quam tempus, bibendum odio sit amet, fringilla sapien. Ut ornare quam sit amet arcu auctor, eget lacinia augue vehicula. Etiam dui dolor, vehicula non blandit eget, tincidunt at quam. Proin auctor, justo sit amet volutpat rutrum, elit erat elementum nisl, sit amet tempus sem elit et est. Cras sit amet diam sagittis, dignissim est et, convallis neque. ",
+            "_nb_terrains": 24,
+            "_surface": "sand",
+            "_latitude": 0.0,
+            "_nb_in_street": "34"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "core.event",
+        "fields": {
+            "_vbuserprofile": 1,
+            "_nb_gymnasiums": 1,
+            "_name_gymnasium": "",
+            "_full": false,
+            "_longitude": 0.0,
+            "_night": false,
+            "_nb_teams": 18,
+            "_city": "Nogent-Sur-Marne",
+            "_zip_code": "94130",
+            "_name": "Toto est dans la place",
+            "_website": "",
+            "_street": "Rue Lequesne",
+            "_region": "Val-De-Marne",
+            "_country": "France",
+            "_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu sollicitudin orci. Vivamus hendrerit et magna ac pharetra. Aliquam lobortis felis vel est blandit, ut blandit velit sagittis. Aenean et felis tincidunt, tincidunt enim nec, facilisis nunc. Curabitur tristique varius elit, eu tristique odio interdum non. Nullam vestibulum, leo ac rhoncus sagittis, purus sapien euismod est, eget ullamcorper purus sem eget augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent hendrerit arcu vitae justo lacinia, a volutpat nibh tincidunt.\r\n\r\nSuspendisse ac odio eget turpis tempor laoreet. Praesent nec laoreet ipsum. Aenean ex dolor, sollicitudin ut rhoncus vel, varius sed ante. Praesent tincidunt est justo, at luctus lorem rhoncus non. Donec id augue nulla. Quisque ac quam vestibulum, dapibus nunc quis, tristique sem. Ut malesuada massa id porttitor tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla mi ante, ut elementum nunc interdum vel. Nam non lorem sit amet lacus congue porta sit amet eu est. Morbi id ultrices lacus. Cras bibendum nibh eu ullamcorper fringilla. Vestibulum vulputate non nunc non fermentum. Aliquam a feugiat nibh.\r\n\r\nNulla porttitor augue non dictum varius. Praesent vestibulum, velit nec pulvinar consequat, metus tellus tempus libero, nec lobortis magna lorem et ante. In sit amet molestie lacus. Nunc sollicitudin cursus iaculis. Donec posuere vehicula lacus. Sed ac pulvinar nibh. Suspendisse at eleifend lectus, rhoncus auctor augue. Sed venenatis nisl vitae leo bibendum sollicitudin. Vivamus id purus quis ligula pulvinar sollicitudin in a lacus. Nulla facilisi. Vivamus gravida, justo eget pulvinar vulputate, purus diam condimentum purus, at volutpat ante quam eu odio. Praesent sagittis elit in augue fermentum, id gravida sem dictum. Maecenas quis mi non ipsum porttitor tincidunt volutpat vel dui.\r\n\r\nSed vulputate, sem eget sagittis hendrerit, orci lacus placerat urna, quis venenatis lectus urna sit amet mauris. Quisque vel massa tortor. Vivamus fermentum, felis ut dignissim congue, leo metus faucibus nibh, non gravida quam risus id ligula. Integer quis lectus urna. Etiam semper dui in orci elementum sollicitudin. Sed lobortis massa eleifend tortor pretium, et luctus lectus maximus. Integer rutrum pretium ligula, quis bibendum libero tincidunt venenatis. Proin augue purus, iaculis nec rhoncus ut, tincidunt nec odio.\r\n\r\nQuisque id accumsan orci, id tristique velit. Aliquam erat volutpat. Nam sollicitudin justo id justo aliquet fermentum. Sed blandit velit non elementum suscipit. Suspendisse nec condimentum sem, elementum sollicitudin mauris. Vivamus a lectus vel lacus condimentum feugiat sed id nibh. Nullam elit diam, vulputate non massa non, consequat hendrerit massa. Nullam bibendum viverra sem, ut cursus leo rhoncus sed. Nam efficitur molestie elit, a laoreet sapien laoreet eget. Donec urna leo, sodales nec scelerisque eu, rutrum gravida diam. Nullam a placerat tortor, eu fringilla lorem. Aenean et nisi id felis condimentum molestie. Vivamus facilisis orci ipsum, quis interdum nunc sodales ut.\r\n\r\nSuspendisse potenti. Suspendisse auctor bibendum turpis et consequat. Cras mauris elit, tincidunt ac dui consequat, aliquam auctor nunc. Sed luctus hendrerit metus quis efficitur. Sed in nisi justo. Integer et ante sit amet quam viverra ornare sed interdum ligula. In vitae lorem vitae lorem sollicitudin iaculis. Duis posuere, urna sed dapibus lacinia, est sapien consectetur quam, eu dictum dui ex in quam. Sed et tortor ut quam elementum semper et ac orci. Ut nulla justo, tristique ac ornare et, tincidunt ut sem. Maecenas quis sollicitudin elit. Vivamus in posuere eros. Donec efficitur cursus suscipit.\r\n\r\nPellentesque pellentesque vitae erat id euismod. Duis sit amet ante quam. In vel ante non quam varius rhoncus vel eu quam. Etiam at quam tempus, bibendum odio sit amet, fringilla sapien. Ut ornare quam sit amet arcu auctor, eget lacinia augue vehicula. Etiam dui dolor, vehicula non blandit eget, tincidunt at quam. Proin auctor, justo sit amet volutpat rutrum, elit erat elementum nisl, sit amet tempus sem elit et est. Cras sit amet diam sagittis, dignissim est et, convallis neque. ",
+            "_nb_terrains": 3,
+            "_surface": "grass",
+            "_latitude": 0.0,
+            "_nb_in_street": "37"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "core.event",
+        "fields": {
+            "_vbuserprofile": 1,
+            "_nb_gymnasiums": 1,
+            "_name_gymnasium": "",
+            "_full": true,
+            "_longitude": 0.0,
+            "_night": false,
+            "_nb_teams": 18,
+            "_city": "Nogent-Sur-Marne",
+            "_zip_code": "94130",
+            "_name": "Test",
+            "_website": "",
+            "_street": "Rue Lequesne",
+            "_region": "",
+            "_country": "France",
+            "_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu sollicitudin orci. Vivamus hendrerit et magna ac pharetra. Aliquam lobortis felis vel est blandit, ut blandit velit sagittis. Aenean et felis tincidunt, tincidunt enim nec, facilisis nunc. Curabitur tristique varius elit, eu tristique odio interdum non. Nullam vestibulum, leo ac rhoncus sagittis, purus sapien euismod est, eget ullamcorper purus sem eget augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent hendrerit arcu vitae justo lacinia, a volutpat nibh tincidunt.\r\n\r\nSuspendisse ac odio eget turpis tempor laoreet. Praesent nec laoreet ipsum. Aenean ex dolor, sollicitudin ut rhoncus vel, varius sed ante. Praesent tincidunt est justo, at luctus lorem rhoncus non. Donec id augue nulla. Quisque ac quam vestibulum, dapibus nunc quis, tristique sem. Ut malesuada massa id porttitor tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla mi ante, ut elementum nunc interdum vel. Nam non lorem sit amet lacus congue porta sit amet eu est. Morbi id ultrices lacus. Cras bibendum nibh eu ullamcorper fringilla. Vestibulum vulputate non nunc non fermentum. Aliquam a feugiat nibh.\r\n\r\nNulla porttitor augue non dictum varius. Praesent vestibulum, velit nec pulvinar consequat, metus tellus tempus libero, nec lobortis magna lorem et ante. In sit amet molestie lacus. Nunc sollicitudin cursus iaculis. Donec posuere vehicula lacus. Sed ac pulvinar nibh. Suspendisse at eleifend lectus, rhoncus auctor augue. Sed venenatis nisl vitae leo bibendum sollicitudin. Vivamus id purus quis ligula pulvinar sollicitudin in a lacus. Nulla facilisi. Vivamus gravida, justo eget pulvinar vulputate, purus diam condimentum purus, at volutpat ante quam eu odio. Praesent sagittis elit in augue fermentum, id gravida sem dictum. Maecenas quis mi non ipsum porttitor tincidunt volutpat vel dui.\r\n\r\nSed vulputate, sem eget sagittis hendrerit, orci lacus placerat urna, quis venenatis lectus urna sit amet mauris. Quisque vel massa tortor. Vivamus fermentum, felis ut dignissim congue, leo metus faucibus nibh, non gravida quam risus id ligula. Integer quis lectus urna. Etiam semper dui in orci elementum sollicitudin. Sed lobortis massa eleifend tortor pretium, et luctus lectus maximus. Integer rutrum pretium ligula, quis bibendum libero tincidunt venenatis. Proin augue purus, iaculis nec rhoncus ut, tincidunt nec odio.\r\n\r\nQuisque id accumsan orci, id tristique velit. Aliquam erat volutpat. Nam sollicitudin justo id justo aliquet fermentum. Sed blandit velit non elementum suscipit. Suspendisse nec condimentum sem, elementum sollicitudin mauris. Vivamus a lectus vel lacus condimentum feugiat sed id nibh. Nullam elit diam, vulputate non massa non, consequat hendrerit massa. Nullam bibendum viverra sem, ut cursus leo rhoncus sed. Nam efficitur molestie elit, a laoreet sapien laoreet eget. Donec urna leo, sodales nec scelerisque eu, rutrum gravida diam. Nullam a placerat tortor, eu fringilla lorem. Aenean et nisi id felis condimentum molestie. Vivamus facilisis orci ipsum, quis interdum nunc sodales ut.\r\n\r\nSuspendisse potenti. Suspendisse auctor bibendum turpis et consequat. Cras mauris elit, tincidunt ac dui consequat, aliquam auctor nunc. Sed luctus hendrerit metus quis efficitur. Sed in nisi justo. Integer et ante sit amet quam viverra ornare sed interdum ligula. In vitae lorem vitae lorem sollicitudin iaculis. Duis posuere, urna sed dapibus lacinia, est sapien consectetur quam, eu dictum dui ex in quam. Sed et tortor ut quam elementum semper et ac orci. Ut nulla justo, tristique ac ornare et, tincidunt ut sem. Maecenas quis sollicitudin elit. Vivamus in posuere eros. Donec efficitur cursus suscipit.\r\n\r\nPellentesque pellentesque vitae erat id euismod. Duis sit amet ante quam. In vel ante non quam varius rhoncus vel eu quam. Etiam at quam tempus, bibendum odio sit amet, fringilla sapien. Ut ornare quam sit amet arcu auctor, eget lacinia augue vehicula. Etiam dui dolor, vehicula non blandit eget, tincidunt at quam. Proin auctor, justo sit amet volutpat rutrum, elit erat elementum nisl, sit amet tempus sem elit et est. Cras sit amet diam sagittis, dignissim est et, convallis neque. ",
+            "_nb_terrains": 3,
+            "_surface": "indoor",
+            "_latitude": 0.0,
+            "_nb_in_street": ""
+        }
+    },
+    {
+        "fields": {
+            "_starting_time": "09:00:00",
+            "_kids": false,
+            "_hobby": true,
+            "_price": 0.0,
+            "_date": "2015-08-02",
+            "_departmental": true,
+            "_regional": true,
+            "_sx_players": "mixed",
+            "_nb_players": 6,
+            "_event": 1,
+            "_national": false,
+            "_professional": false
+        },
+        "model": "core.tournament",
+        "pk": 1
+    },
+    {
+        "fields": {
+            "_starting_time": "09:00:00",
+            "_kids": false,
+            "_hobby": false,
+            "_price": 0.0,
+            "_date": "2015-08-23",
+            "_departmental": true,
+            "_regional": true,
+            "_sx_players": "female",
+            "_nb_players": 3,
+            "_event": 2,
+            "_national": true,
+            "_professional": false
+        },
+        "model": "core.tournament",
+        "pk": 2
+    },
+    {
+        "fields": {
+            "_starting_time": "09:00:00",
+            "_kids": false,
+            "_hobby": true,
+            "_price": 0.0,
+            "_date": "2015-08-16",
+            "_departmental": true,
+            "_regional": true,
+            "_sx_players": "male",
+            "_nb_players": 2,
+            "_event": 3,
+            "_national": false,
+            "_professional": false
+        },
+        "model": "core.tournament",
+        "pk": 3
+    },
+    {
+        "fields": {
+            "_starting_time": "09:00:00",
+            "_kids": false,
+            "_hobby": true,
+            "_price": 0.0,
+            "_date": "2015-08-16",
+            "_departmental": true,
+            "_regional": true,
+            "_sx_players": "female",
+            "_nb_players": 2,
+            "_event": 3,
+            "_national": false,
+            "_professional": false
+        },
+        "model": "core.tournament",
+        "pk": 4
+    },
+    {
+        "fields": {
+            "_starting_time": "09:00:00",
+            "_kids": false,
+            "_hobby": true,
+            "_price": 0.0,
+            "_date": "2015-08-16",
+            "_departmental": true,
+            "_regional": true,
+            "_sx_players": "mixed",
+            "_nb_players": 2,
+            "_event": 3,
+            "_national": false,
+            "_professional": false
+        },
+        "model": "core.tournament",
+        "pk": 5
+    },
+    {
+        "fields": {
+            "_starting_time": "09:00:00",
+            "_kids": false,
+            "_hobby": true,
+            "_price": 0.0,
+            "_date": "2015-08-22",
+            "_departmental": true,
+            "_regional": true,
+            "_sx_players": "mixed",
+            "_nb_players": 4,
+            "_event": 4,
+            "_national": true,
+            "_professional": true
+        },
+        "model": "core.tournament",
+        "pk": 6
+    }
+]
