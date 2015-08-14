@@ -15,8 +15,8 @@ import json
 
 from .models import Tournament, Event
 from .forms import EventForm
+from vbtournaments import settings
 
-# Create your views here.
 
 
 def home(request):
@@ -38,11 +38,11 @@ class EventDetailView(generic.DetailView):
     context_object_name = 'event'
 
 
-@login_required
+@login_required(login_url="/login")
 def add_new_event(request):
-    if request.method == 'GET':
-        form = EventForm()
-    elif request.method == 'POST':
+    form = EventForm()
+
+    if request.method == 'POST':
         form = EventForm(request.POST)
 
         print(json.dumps(request.POST, indent=4))
@@ -61,7 +61,7 @@ def add_new_event(request):
             city = form.cleaned_data['city']
             country = form.cleaned_data['country']
 
-            geolocator = GoogleV3(api_key="AIzaSyD8HsL7rc6pC6Oo9usD_mCggAq60HdiD7M")
+            geolocator = GoogleV3(api_key=settings.GOOGLE_API_KEY)
             locations = geolocator.geocode("{nb_in_street} {street}, {city}, {country}".format(nb_in_street=nb_in_street,
                                                                                                street=street,
                                                                                                city=city,
@@ -82,28 +82,27 @@ def add_new_event(request):
 
 
             e = Event.objects.create(
-                vbuser=vbuser,
-                name=name,
-                nb_terrains=nb_terrains,
-                nb_gymnasiums=nb_gymnasiums,
-                nb_teams=nb_teams,
-                night=night,
-                surface=surface,
-                name_gymnasium=name_gymnasium,
-                nb_in_street=nb_in_street,
-                street=street,
-                city=city,
-                zip_code=zip_code,
-                region=region,
-                country=country,
-                latitude=latitude,
-                longitude=longitude,
-                description=description,
-                website=website,
-                full=full
+                _vbuser=vbuser,
+                _name=name,
+                _nb_terrains=nb_terrains,
+                _nb_gymnasiums=nb_gymnasiums,
+                _nb_teams=nb_teams,
+                _night=night,
+                _surface=surface,
+                _name_gymnasium=name_gymnasium,
+                _nb_in_street=nb_in_street,
+                _street=street,
+                _city=city,
+                _zip_code=zip_code,
+                _region=region,
+                _country=country,
+                _latitude=latitude,
+                _longitude=longitude,
+                _description=description,
+                _website=website,
+                _full=full
             )
 
             return HttpResponseRedirect(reverse('event_detail', kwargs={'pk': e.id}))
 
-        print(form.errors)
     return render(request, 'core/event_form.html', {'form': form})

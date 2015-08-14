@@ -17,8 +17,11 @@ assign the default database to another configuration later in your code.
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import configparser
 import os
+
 import dj_database_url
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -26,7 +29,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q5yate+(ep8&vuch6)ifj+p5jk4ukfkip4w8o)qc9k-f-opzhj'
+if 'TRAVIS' in os.environ:
+    # Using old keys for Travis
+    FQDN = 'vbtournaments.fr'
+    SECRET_KEY = 'q5yate+(ep8&vuch6)ifj+p5jk4ukfkip4w8o)qc9k-f-opzhj'
+    GOOGLE_API_KEY = 'AIzaSyD8HsL7rc6pC6Oo9usD_mCggAq60HdiD7M'
+else:
+    cfg = configparser.ConfigParser()
+    cfg.read('./config/config.cfg')
+    FQDN = cfg.get('website', 'fqdn')
+    SECRET_KEY = cfg.get('keys', 'SECRET_KEY')
+    GOOGLE_API_KEY = cfg.get('keys', 'GOOGLE_API_KEY')
+    EMAIL_HOST = cfg.get('email', 'EMAIL_HOST')
+    EMAIL_HOST_USER = cfg.get('email', 'EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = cfg.get('email', 'EMAIL_HOST_PASSWORD')
+    EMAIL_PORT = cfg.getint('email', 'EMAIL_PORT')
+    EMAIL_USE_TLS = cfg.getboolean('email', 'EMAIL_USE_TLS')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'easy_maps',
+    # 'easy_maps',
     'bootstrap3',
     'bootstrapform',
     'accounts',
@@ -95,7 +113,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-
 if 'TRAVIS' in os.environ:
     DATABASES = {
         'default': {
@@ -110,7 +127,7 @@ if 'TRAVIS' in os.environ:
 else:
     # Parse database configuration from $DATABASE_URL
     DATABASES = {
-        'default' : dj_database_url.config()
+        'default': dj_database_url.config()
     }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
@@ -124,6 +141,72 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
+# Media asset configuration
+MEDIA_ROOT = BASE_DIR + "/media/"
+MEDIA_URL = '/media/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# The URL where requests are redirected for login, especially when using the login_required() decorator.
+LOGIN_URL = '/login'
+
+BOOTSTRAP3 = {
+    # The URL to the jQuery JavaScript file
+    'jquery_url': '//code.jquery.com/jquery.min.js',
+
+    # The Bootstrap base URL
+    'base_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/',
+
+    # The complete URL to the Bootstrap CSS file (None means derive it from base_url)
+    'css_url': '//bootswatch.com/flatly/bootstrap.min.css',
+
+    # The complete URL to the Bootstrap CSS file (None means no theme)
+    'theme_url': None,
+
+    # The complete URL to the Bootstrap JavaScript file (None means derive it from base_url)
+    'javascript_url': None,
+
+    # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap3.html)
+    'javascript_in_head': False,
+
+    # Include jQuery with Bootstrap JavaScript (affects django-bootstrap3 template tags)
+    'include_jquery': True,
+
+    # Label class to use in horizontal forms
+    'horizontal_label_class': 'col-md-3',
+
+    # Field class to use in horizontal forms
+    'horizontal_field_class': 'col-md-9',
+
+    # Set HTML required attribute on required fields
+    'set_required': True,
+
+    # Set HTML disabled attribute on disabled fields
+    'set_disabled': False,
+
+    # Set placeholder attributes to label if no placeholder is provided
+    'set_placeholder': True,
+
+    # Class to indicate required (better to set this in your Django form)
+    'required_css_class': '',
+
+    # Class to indicate error (better to set this in your Django form)
+    'error_css_class': 'has-error',
+
+    # Class to indicate success, meaning the field has valid input (better to set this in your Django form)
+    'success_css_class': 'has-success',
+
+    # Renderers (only set these if you have studied the source and understand the inner workings)
+    'formset_renderers': {
+        'default': 'bootstrap3.renderers.FormsetRenderer',
+    },
+    'form_renderers': {
+        'default': 'bootstrap3.renderers.FormRenderer',
+    },
+    'field_renderers': {
+        'default': 'bootstrap3.renderers.FieldRenderer',
+        'inline': 'bootstrap3.renderers.InlineFieldRenderer',
+    },
+}

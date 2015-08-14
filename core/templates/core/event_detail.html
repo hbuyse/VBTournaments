@@ -10,30 +10,27 @@
     </ul>
 </div>
 
-<div class="bs-docs-section">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="page-header">
-                <div class="btn-group pull-right">
-                    <a href="#" class="btn btn-default">Recherche équipe</a>
-                    <a href="#" class="btn btn-default">Recherche joueur</a>
-                    {% if object.get_full %}
-                        <a href="#" class="btn btn-danger disabled">Inscription</a>
-                    {% else %}
-                        <a href="#" class="btn btn-info">Inscription</a>
-                    {% endif %}
-                </div>
-                <h1 id="type">{{ object.name }}</h1>
-                {% if object.get_surface == "grass" %}
-                    <h4>Tournoi se déroulant sur de l'herbe.</h4>
-                {% elif object.get_surface == "sand" %}
-                    <h4>Tournoi se déroulant sur du sable.</h4>
-                {% elif object.get_surface == "indoor" %}
-                    <h4>Tournoi se déroulant à l'intérieur.</h4>
-                {% endif %}
-            </div>
+<div class="bs-component">
+    <div class="page-header">
+        <div class="btn-group pull-right">
+            <a href="#" class="btn btn-default">Recherche équipe</a>
+            <a href="#" class="btn btn-default">Recherche joueur</a>
+            {% if object.full %}
+                <a href="#" class="btn btn-danger disabled">Inscription</a>
+            {% else %}
+                <a href="#" class="btn btn-info">Inscription</a>
+            {% endif %}
         </div>
+        <h1 id="type">{{ object.name }}</h1>
+        {% if object.surface == "grass" %}
+            <h4>Tournoi se déroulant sur de l'herbe.</h4>
+        {% elif object.surface == "sand" %}
+            <h4>Tournoi se déroulant sur du sable.</h4>
+        {% elif object.surface == "indoor" %}
+            <h4>Tournoi se déroulant à l'intérieur.</h4>
+        {% endif %}
     </div>
+</div>
 
     <!-- Headings -->
 
@@ -47,31 +44,31 @@
                             <td class="mytd-user">
                                 <strong>Organisateur:</strong>
                             </td>
-                            <td>{{ object.get_vbuserprofile.get_full_name }}</td>
+                            <td>{{ object.vbuserprofile.get_full_name }}</td>
                         </tr>
                         <tr>
                             <td class="mytd-user">
                                 <strong>Club:</strong>
                             </td>
-                            <td>{{ object.get_vbuserprofile.get_club }}</td>
+                            <td>{{ object.vbuserprofile.club }}</td>
                         </tr>
                         <tr>
                             <td class="mytd-user">
                                 <strong>Gymnases:</strong>
                             </td>
-                            <td>{{ object.get_nb_gymnasiums }}</td>
+                            <td>{{ object.nb_gymnasiums }}</td>
                         </tr>
                         <tr>
                             <td class="mytd-user">
                                 <strong>Terrains:</strong>
                             </td>
-                            <td>{{ object.get_nb_terrains }}</td>
+                            <td>{{ object.nb_terrains }}</td>
                         </tr>
                         <tr>
                             <td class="mytd-user">
                                 <strong>Équipes:</strong>
                             </td>
-                            <td>{{ object.get_nb_teams }}</td>
+                            <td>{{ object.nb_teams }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -80,11 +77,44 @@
         <div class="col-xs-6 col-md-4">
             <div class="bs-component">
                 <h2>Adresse</h2>
-                <p>{{ object.get_name_gymnasium }}</p>
-                <p>{{ object.get_nb_in_street }}, {{ object.get_street }}</p>
-                <p>{{ object.get_zip_code }} {{ object.get_city }}</p>
-                <p>{{ object.get_region }}</p>
-                <p>{{ object.get_country }}</p>
+                <table class="table">
+                    <tbody>
+                        {% if object.name_gymnasium %}
+                        <tr>
+                            <td>
+                                {{ object.name_gymnasium }}
+                            </td>
+                        </tr>
+                        {% endif %}
+
+                        <tr>
+                            <td>
+                                {% if object.nb_in_street %}{{ object.nb_in_street }}, {% endif %}{{ object.street }}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                {% if object.zip_code %}{{ object.zip_code }} {% endif %}{{ object.city }}
+                            </td>
+                        </tr>
+
+                        {% if object.region %}
+                        <tr>
+                            <td>
+                                {{ object.region }}
+                            </td>
+                        </tr>
+                        {% endif %}
+
+                        <tr>
+                            <td>
+                                {{ object.country }}
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="col-xs-6 col-md-4">
@@ -93,15 +123,15 @@
                 <div class="list-group">
                 {% for d in object.get_all_tournaments_related %}
                     <div class="list-group-item">
-                        <h4 class="list-group-item-heading">{{ d.get_date }}</h4>
+                        <h4 class="list-group-item-heading">{{ d.date }}</h4>
                         <p class="list-group-item-text">
-                            {{ d.get_nb_players }}x{{ d.get_nb_players }}
+                            {{ d.nb_players }}x{{ d.nb_players }}
 
-                            {% if d.get_sx_players == "female" %}
+                            {% if d.sx_players == "female" %}
                                 Féminin
-                            {% elif d.get_sx_players == "male" %}
+                            {% elif d.sx_players == "male" %}
                                 Masculin
-                            {% elif d.get_sx_players == "mixed" %}
+                            {% elif d.sx_players == "mixed" %}
                                 Mixte
                             {% endif %}
 
@@ -121,7 +151,7 @@
     <div class="bs-component">
         <div class="bs-component justify">
             <h2>Description</h2>
-                {{ object.get_description|linebreaksbr }}
+                {{ object.description|linebreaksbr }}
         </div>
     </div>
 

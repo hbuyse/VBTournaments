@@ -1,0 +1,13 @@
+Bienvenue {{ username }}!
+
+Vous venez de vous créer un compte sur VBTournaments référençant tous les tournois de volley-ball en France!
+
+Pour activer votre compte, cliquez sur ce lien :
+{{ activation_link }}
+
+
+--
+VBTournaments
+
+Ceci est un message automatique.
+S'il vous plaît, n'y répondez pas.

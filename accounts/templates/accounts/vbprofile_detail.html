@@ -36,56 +36,80 @@
     <div class="row">
         <div class="col-xs-6 col-md-4">
             <h2>Informations</h2>
+            {% if object.share_mail and object.share_phone %}
             <table class="table">
                 <tbody>
+                    {% if object.share_mail and object.get_email %}
                     <tr>
                         <td class="mytd-user">
                             <i class="fa fa-envelope"></i>
                         </td>
                         <td>{{ object.get_email }}</td>
                     </tr>
+                    {% endif %}
+                    {% if object.share_phone and object.phone %}
                     <tr>
                         <td class="mytd-user">
                             <i class="fa fa-phone"></i>
                         </td>
-                        <td>{{ object.get_phone }}</td>
+                        <td>{{ object.phone }}</td>
                     </tr>
+                    {% endif %}
                 </tbody>
             </table>
+            {% else %}
+            <p>L'utilisateur ne veux pas donner ses informations.</p>
+            {% endif %}
         </div>
 
         <div class="col-xs-6 col-md-4">
             <h2>Club et niveau</h2>
+            {% if object.club or object.level %}
             <table class="table">
                 <tbody>
+                    {% if object.club %}
                     <tr>
                         <td class="mytd-user">
                             <strong>Club:</strong>
                         </td>
-                        <td>{{ object.get_club }}</td>
+                        <td>{{ object.club }}</td>
                     </tr>
+                    {% endif %}
+                    {% if object.level %}
                     <tr>
                         <td class="mytd-user">
                             <strong>Niveau:</strong>
                         </td>
-                        <td>{{ object.get_level }}</td>
+                        <td>{{ object.level }}</td>
                     </tr>
+                    {% endif %}
                 </tbody>
             </table>
+            {% else %}
+            <p>L'utilisateur ne veux pas donner ses informations sportives.</p>
+            {% endif %}
         </div>
 
         <div class="col-xs-6 col-md-4">
             <h2>Réseaux sociaux</h2>
-            <p>
-                <a class="btn btn-default btn-sm " href="https://www.facebook.com/{{ object.get_facebook }}">
-                    <i class="fa fa-facebook-official fa-1g pull-left"></i>&nbsp;{{ object.get_facebook }}
-                </a>
-            </p>
-            <p>
-                <a class="btn btn-default btn-sm " style="vertical-align: middle;" href="https://www.twitter.com/{{ object.get_twitter }}">
-                    <i class="fa fa-twitter fa-1g pull-left"></i>{{ object.get_twitter }}
-                </a>
-            </p>
+            {% if object.facebook or object.twitter %}
+                {% if object.facebook %}
+                <p>
+                    <a class="btn btn-default btn-sm" href="https://www.facebook.com/{{ object.facebook }}">
+                        <i class="fa fa-facebook-official fa-1g pull-left"></i>&nbsp;{{ object.facebook }}
+                    </a>
+                </p>
+                {% endif %}
+                {% if object.twitter %}
+                <p>
+                    <a class="btn btn-default btn-sm" style="vertical-align: middle;" href="https://www.twitter.com/{{ object.twitter }}">
+                        <i class="fa fa-twitter fa-1g pull-left"></i>{{ object.twitter }}
+                    </a>
+                </p>
+                {% endif %}
+            {% else %}
+            <p>L'utilisateur ne veux pas donner ses coordonnées de réseaux sociaux.</p>
+            {% endif %}
         </div>
     </div>
 

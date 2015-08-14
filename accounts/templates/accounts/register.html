@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load bootstrap %}
+
+<div class="bs-component">
+    <ul class="breadcrumb">
+        <li><a href="{% url 'core:home' %}">Accueil</a></li>
+        <li class="active">Création de compte</li>
+    </ul>
+</div>
+
+{% if user.is_authenticated %}
+<div class="bs-component">
+    <div class="page-header">
+        <h1 id="type">Comment vous dire...?</h1>
+    </div>
+</div>
+
+<div class="bs-component">
+    <h4>Vous êtes déjà identifié. Vous ne pouvez donc pas créer de nouveau compte.</h4>
+    <h4>Si vous voulez absolument créer un autre compte, déconnectez-vous.</h4>
+</div>
+
+{% else %}
+
+<div class="bs-component">
+    <div class="page-header">
+        <h1 id="type">Création de compte</h1>
+    </div>
+</div>
+
+<div class="bs-component">
+    <form class="form-horizontal" method="post">
+        {% csrf_token %}
+
+        <div class="form-group col-md-12">
+            {{ form|bootstrap }}
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 col-md-offset-5">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-default">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

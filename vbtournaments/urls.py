@@ -17,7 +17,21 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    # Admin pages
     url(r'^admin/', include(admin.site.urls)),
+
+    # Basis pages
     url(r'^', include('core.urls', namespace='core')),
+
+    # Users pages
     url(r'^users/', include('accounts.urls', namespace='accounts')),
+
+    # Login / logout
+    url(r'^login$', 'accounts.views.login_user', name='login'),
+    url(r'^logout$', 'django.contrib.auth.views.logout', name='logout', kwargs={'next_page': '/'}),
+
+    # Register pages
+    url(r'^register$', 'accounts.views.register', name='register'),
+    url(r'^activation/(?P<activation_key>.+)$', 'accounts.views.activation', name='activation'),
+    url(r'^new-activation-link/(?P<username>\d+)/$', 'accounts.views.new_activation_link', name='new_activation_link'),
 ]
