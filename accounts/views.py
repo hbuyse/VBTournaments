@@ -74,9 +74,6 @@ def login_user(request):
 
 
 def register(request):
-    if request.user.is_authenticated():
-        return redirect('core:home')
-
     uf = UserForm()
 
     if request.method == 'POST':
