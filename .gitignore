@@ -117,5 +117,4 @@ crashlytics.properties
 crashlytics-build.properties
 
 # Personnal ignored files
-.env
-config.cfg
+config/config.cfg
