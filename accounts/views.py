@@ -138,7 +138,7 @@ def activation(request, activation_key):
         already_active = True
 
     return render_to_response('accounts/activation.html',
-                              {'activation_expired': activation_expired, 'already_active': already_active},
+                              {'activation_expired': activation_expired, 'already_active': already_active, 'username': vbup.get_username() },
                               context_instance=RequestContext(request))
 
 

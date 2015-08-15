@@ -34,9 +34,10 @@
 
 <div class="bs-component">
     {% if not activation_expired and not already_active %}
-    <p>Bienvenue sur VBTournaments</p>
+    <p>Bienvenue sur VBTournaments, {{ username }}</p>
     {% elif activation_expired %}
     <p>T'as eu deux jours pour activer ton compte... Comment as-tu fait?!</p>
+    <p>Si tu veux toujours activer ton compte, tu peux demander un nouveau lien d'activation en cliquant <a href="{% url 'new_activation_link' username %}">ici</a></p>
     {% elif already_active %}
     <p>T'as pas eu comme une impression de déjà-vu en cliquant sur le lien dans le mail?!</p>
     {% endif %}
