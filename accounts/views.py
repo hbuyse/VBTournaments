@@ -88,7 +88,7 @@ def register(request):
             datas['last_name'] = uf.cleaned_data['last_name']
             datas['username'] = uf.cleaned_data['username']
             datas['email'] = uf.cleaned_data['email']
-            datas['password1'] = uf.cleaned_data['password1']
+            datas['password'] = uf.cleaned_data['password']
 
             # We will generate a random activation key
             salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:5]
