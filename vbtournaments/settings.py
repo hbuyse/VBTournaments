@@ -161,6 +161,7 @@ BOOTSTRAP3 = {
 
     # The complete URL to the Bootstrap CSS file (None means derive it from base_url)
     'css_url': '//bootswatch.com/flatly/bootstrap.min.css',
+    # 'css_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css',     # Default
 
     # The complete URL to the Bootstrap CSS file (None means no theme)
     'theme_url': None,
