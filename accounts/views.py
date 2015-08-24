@@ -37,9 +37,16 @@ class VBUserProfileListView(generic.ListView):
 
 
 def vbuserprofile_view(request, username):
+    vbup = None
+
+    # Getting the informations about the user
     try:
         u = User.objects.get(username=username)
         vbup = VBUserProfile.objects.get(_user=u)
+
+        # Check if the user is still active
+        if vbup.get_is_active:
+            raise User.DoesNotExist
     except User.DoesNotExist:
         raise Http404("L'utilisateur {} n'existe pas.".format(username))
 
