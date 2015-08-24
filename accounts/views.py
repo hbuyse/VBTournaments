@@ -33,7 +33,7 @@ class VBUserProfileListView(generic.ListView):
 
     def get_queryset(self):
         """Return all events."""
-        return VBUserProfile.objects.all()
+        return VBUserProfile.objects.filter(_user__is_active=True)
 
 
 def vbuserprofile_view(request, username):
