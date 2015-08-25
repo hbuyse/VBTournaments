@@ -45,7 +45,7 @@ def vbuserprofile_view(request, username):
         vbup = VBUserProfile.objects.get(_user=u)
 
         # Check if the user is still active
-        if vbup.get_is_active:
+        if not vbup.get_is_active():
             raise User.DoesNotExist
     except User.DoesNotExist:
         raise Http404("L'utilisateur {} n'existe pas.".format(username))
