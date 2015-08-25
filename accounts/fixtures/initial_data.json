@@ -54,6 +54,24 @@
         "pk": 3
     },
     {
+        "model": "auth.user",
+        "fields": {
+            "date_joined": "2015-08-14T20:30:26Z",
+            "last_name": "toto",
+            "user_permissions": [],
+            "first_name": "Toto",
+            "username": "toto",
+            "groups": [],
+            "password": "pbkdf2_sha256$20000$WLQ0ZsQu6Wmp$boY/iwjnaiUIxlmBUmqyjPBGz0zQdnZCakLFsvlalnI=",
+            "last_login": "2015-08-14T21:12:32Z",
+            "is_staff": false,
+            "is_superuser": false,
+            "email": "hbuyse@yahoo.fr",
+            "is_active": false
+        },
+        "pk": 4
+    },
+    {
         "pk": 1,
         "model": "accounts.vbuserprofile",
         "fields": {
@@ -99,6 +117,22 @@
             "_share_phone": true,
             "_facebook": "",
             "_phone": "+33000000000"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "accounts.vbuserprofile",
+        "fields": {
+            "_twitter": "toto",
+            "_level": "national_2",
+            "_activation_key": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "_club": "VCN",
+            "_user": 4,
+            "_share_mail": true,
+            "_key_expires": "2015-08-14T18:34:33Z",
+            "_share_phone": false,
+            "_facebook": "Toto",
+            "_phone": ""
         }
     }
 ]
