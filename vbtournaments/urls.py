@@ -33,5 +33,5 @@ urlpatterns = [
     # Register pages
     url(r'^register$', 'accounts.views.register', name='register'),
     url(r'^activation/(?P<activation_key>.+)$', 'accounts.views.activation', name='activation'),
-    url(r'^new-activation-link/(?P<username>\d+)/$', 'accounts.views.new_activation_link', name='new_activation_link'),
+    url(r'^new-activation-link/(?P<username>\w+)$', 'accounts.views.new_activation_link', name='new_activation_link'),
 ]

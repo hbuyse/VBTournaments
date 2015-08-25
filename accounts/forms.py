@@ -33,19 +33,19 @@ class UserForm(forms.ModelForm):
     email = forms.EmailField(label="Courrier électronique",
                              required=True)
 
-    password1 = forms.CharField(label="Mot de passe",
+    password = forms.CharField(label="Mot de passe",
                                 required=True,
                                 widget=forms.PasswordInput(),
                                 max_length=50)
 
-    password2 = forms.CharField(label="Vérification du mot de passe",
+    password_check = forms.CharField(label="Vérification du mot de passe",
                                 required=True,
                                 widget=forms.PasswordInput(),
                                 max_length=50)
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
+        fields = ('first_name', 'last_name', 'username', 'email', 'password', 'password_check')
 
     # Override of clean method for :
     # * username check,
@@ -60,11 +60,11 @@ class UserForm(forms.ModelForm):
         if User.objects.filter(email=data['email']).exists():
             raise ValidationError({'email': ["Le courrier électronique {} est déjà utilisé.".format(data['email'])]})
 
-        if not data['password2']:
-            raise ValidationError({'password2': ["Vous devez confirmer votre mot de passe."]})
+        if not data['password_check']:
+            raise ValidationError({'password_check': ["Vous devez confirmer votre mot de passe."]})
 
-        if data['password1'] != data['password2']:
-            raise ValidationError({'password2': ["Les mots de passe ne sont pas identiques."]})
+        if data['password'] != data['password_check']:
+            raise ValidationError({'password_check': ["Les mots de passe ne sont pas identiques."]})
 
         return self.cleaned_data
 
@@ -73,7 +73,7 @@ class UserForm(forms.ModelForm):
         print(datas)
         u = User.objects.create_user(username=datas['username'],
                                      email=datas['email'],
-                                     password=datas['password1'],
+                                     password=datas['password'],
                                      first_name=datas['first_name'],
                                      last_name=datas['last_name']
                                      )

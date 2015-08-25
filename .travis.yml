@@ -16,6 +16,7 @@ notifications:
 
 before_script:
   - psql -c 'CREATE DATABASE vbtournaments;' -U postgres
+  - python manage.py migrate
 
 # command to install dependencies
 install:

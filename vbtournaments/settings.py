@@ -34,6 +34,14 @@ if 'TRAVIS' in os.environ:
     FQDN = 'vbtournaments.fr'
     SECRET_KEY = 'q5yate+(ep8&vuch6)ifj+p5jk4ukfkip4w8o)qc9k-f-opzhj'
     GOOGLE_API_KEY = 'AIzaSyD8HsL7rc6pC6Oo9usD_mCggAq60HdiD7M'
+elif 'ON_HEROKU' in os.environ:
+    SECRET_KEY = os.getenv('SECRET_KEY')
+    GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
+    EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+    EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+    EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
 else:
     cfg = configparser.ConfigParser()
     cfg.read('./config/config.cfg')
@@ -161,6 +169,7 @@ BOOTSTRAP3 = {
 
     # The complete URL to the Bootstrap CSS file (None means derive it from base_url)
     'css_url': '//bootswatch.com/flatly/bootstrap.min.css',
+    # 'css_url': '//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css',     # Default
 
     # The complete URL to the Bootstrap CSS file (None means no theme)
     'theme_url': None,

@@ -13,6 +13,7 @@ class VBUserProfileAdmin(admin.ModelAdmin):
         ('User informations', {'fields': ['_club', '_level', '_phone']}),
         ('Share informations', {'fields': ['_share_mail', '_share_phone']}),
         ('Social informations', {'fields': ['_facebook', '_twitter']}),
+        ('Activation key informations', {'fields': ['_activation_key', '_key_expires']}),
         ]
     list_display=('get_username', 'get_email', '_club')
     search_fields = ['_user.username', '_user.first_name', '_user.last_name']

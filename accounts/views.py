@@ -9,8 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render, render_to_response, redirect
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render, render_to_response, redirect
 from django.utils import timezone
 from django.template import RequestContext
 from django.views import generic
@@ -33,12 +33,22 @@ class VBUserProfileListView(generic.ListView):
 
     def get_queryset(self):
         """Return all events."""
-        return VBUserProfile.objects.all()
+        return VBUserProfile.objects.filter(_user__is_active=True)
 
 
 def vbuserprofile_view(request, username):
-    u = get_object_or_404(User, username=username)
-    vbup = VBUserProfile.objects.get(_user=u)
+    vbup = None
+
+    # Getting the informations about the user
+    try:
+        u = User.objects.get(username=username)
+        vbup = VBUserProfile.objects.get(_user=u)
+
+        # Check if the user is still active
+        if vbup.get_is_active:
+            raise User.DoesNotExist
+    except User.DoesNotExist:
+        raise Http404("L'utilisateur {} n'existe pas.".format(username))
 
     return render_to_response('accounts/vbprofile_detail.html', {'object': vbup}, context_instance=RequestContext(request))
 
@@ -71,9 +81,6 @@ def login_user(request):
 
 
 def register(request):
-    if request.user.is_authenticated():
-        return redirect('core:home')
-
     uf = UserForm()
 
     if request.method == 'POST':
@@ -85,7 +92,7 @@ def register(request):
             datas['last_name'] = uf.cleaned_data['last_name']
             datas['username'] = uf.cleaned_data['username']
             datas['email'] = uf.cleaned_data['email']
-            datas['password1'] = uf.cleaned_data['password1']
+            datas['password'] = uf.cleaned_data['password']
 
             # We will generate a random activation key
             salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:5]
@@ -117,7 +124,10 @@ def activation(request, activation_key):
     already_active = False
 
     # Grab the profile based on the activation key
-    vbup = get_object_or_404(VBUserProfile, _activation_key=activation_key)
+    try:
+        vbup = VBUserProfile.objects.get(_activation_key=activation_key)
+    except VBUserProfile.DoesNotExist:
+        raise Http404("La clé d'activation donnée n'est liée à aucun utilisateur.")
 
     # Check if the user is not active
     if vbup.user.is_active == False:
@@ -135,7 +145,7 @@ def activation(request, activation_key):
         already_active = True
 
     return render_to_response('accounts/activation.html',
-                              {'activation_expired': activation_expired, 'already_active': already_active},
+                              {'activation_expired': activation_expired, 'already_active': already_active, 'username': vbup.get_username() },
                               context_instance=RequestContext(request))
 
 
@@ -143,7 +153,10 @@ def new_activation_link(request, username):
     datas = dict()
     uf = UserForm()
 
-    user = get_object_or_404(User, _username=username)
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        raise Http404("L'utilisateur {} n'existe pas.".format(username))
 
     if user is not None and user.is_active == False:
         datas['username'] = user.username
@@ -151,19 +164,22 @@ def new_activation_link(request, username):
         datas['email_path'] = "/mail/activation_email.txt"
         datas['email_subject'] = "Nouveau lien d'activation " + settings.FQDN
 
-        salt = hashlib.sha1(str(random.random())).hexdigest()[:5]
+        salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:5]
         usernamesalt = datas['username']
-        if isinstance(usernamesalt, unicode):
-            usernamesalt = usernamesalt.encode('utf8')
-        datas['activation_key'] = hashlib.sha1(salt + usernamesalt).hexdigest()
+        if isinstance(usernamesalt, str):
+            usernamesalt = usernamesalt
+        datas['activation_key'] = hashlib.sha1(str(salt + usernamesalt).encode('utf8')).hexdigest()
 
-        vbup = get_object_or_404(VBUserProfile, _user=user)
-        vbup.activation_key = datas['activation_key']
-        vbup.key_expires = datetime.datetime.strftime(
-            datetime.datetime.now() + datetime.timedelta(days=2), "%Y-%m-%d %H:%M:%S")
-        vbup.save()
+        try:
+            vbup = VBUserProfile.objects.get(_user=user)
+            vbup.activation_key = datas['activation_key']
+            vbup.key_expires = datetime.datetime.strftime(
+                datetime.datetime.now() + datetime.timedelta(days=2), "%Y-%m-%d %H:%M:%S")
+            vbup.save()
+        except VBUserProfile.DoesNotExist:
+            raise Http404("L'utilisateur {} n'a pas de profil. Contactez un administrateur.".format(user.username))
 
         uf.sendEmail(datas)
         request.session['new_link'] = True  # Display : new link send
 
-    return redirect(home)
+    return HttpResponseRedirect(reverse('core:home'))
