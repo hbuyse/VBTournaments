@@ -359,6 +359,14 @@ class Tournament(models.Model):
         self._sx_players = val
 
     @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, val):
+        self._price = val
+
+    @property
     def hobby(self):
         return self._hobby
 
