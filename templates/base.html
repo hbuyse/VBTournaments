@@ -27,6 +27,18 @@
 
     {# My javascript #}
     <script type="text/javascript" src="{% static 'js/rowlink.js' %}"></script>
+    <script>
+        ! function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, 'script', 'twitter-wjs');
+    </script>
 
     <title>VBTournaments</title>
 </head>
@@ -36,7 +48,7 @@
     {% include "navbar_header.html" %}
 
     {# Beginning of all other pages #}
-    <div class="container-fluid" id="vbt-content">
+    <div class="container" id="vbt-content">
 
         {% block content %}{% endblock %}
 
