@@ -34,14 +34,14 @@ class UserForm(forms.ModelForm):
                              required=True)
 
     password = forms.CharField(label="Mot de passe",
-                                required=True,
-                                widget=forms.PasswordInput(),
-                                max_length=50)
+                               required=True,
+                               widget=forms.PasswordInput(),
+                               max_length=50)
 
     password_check = forms.CharField(label="Vérification du mot de passe",
-                                required=True,
-                                widget=forms.PasswordInput(),
-                                max_length=50)
+                                     required=True,
+                                     widget=forms.PasswordInput(),
+                                     max_length=50)
 
     class Meta:
         model = User
@@ -101,4 +101,6 @@ class UserForm(forms.ModelForm):
         message = t.render(c)
 
         # print unicode(message).encode('utf8')
-        send_mail(datas['email_subject'], message, 'VBTournaments <tournaments.vb@' + settings.FQDN +'>', [datas['email']], fail_silently=False)
+        send_mail(datas['email_subject'], message, 'VBTournaments <tournaments.vb@' +
+                  settings.FQDN + '>', [datas['email']], fail_silently=False)
+
