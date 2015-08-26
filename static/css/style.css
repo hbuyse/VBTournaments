@@ -2,10 +2,6 @@ body {
     padding-top: 70px;
 }
 
-.container-fluid {
-    width: 1400px;
-}
-
 .vcenter {
     display: inline-block;
     vertical-align: middle;
