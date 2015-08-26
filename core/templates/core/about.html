@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bs-component">
+    <ul class="breadcrumb">
+        <li><a href="{% url 'core:home' %}">Accueil</a></li>
+        <li class="active">À propos de VBTournaments</li>
+    </ul>
+</div>
+
+<div class="bs-component">
+    <div class="page-header">
+        <h1 id="type">À propos de VBTournaments</h1>
+    </div>
+    <p>VBTournaments est un site web de référencement de tournois de volleyball.<br />
+    VBTournaments permet aussi l'inscription en ligne d'équipe pour les joueurs et une gestion des équipes inscrites pour les organisateurs.</p>
+
+    <p class="text-warning">Pour le moment, VBTournaments ne permet pas de payer en ligne!</p>
+</div>
+
+
+<div class="bs-component">
+    <h2>Mais qui est derrière ce site?</h2>
+
+    <p>Salut!</p>
+    <p>Je me présente, je m'appelle Henri (non, non, ce n'est pas une blague :) ).
+       Je participe à pas mal de tournois de volley-ball et j'adore ça.</p>
+    <p>Je voulais tout simplement développer mon propre site et mes propres applications mobiles alors l'idée de créer VBTournaments m'est venu.</p>
+</div>
+
+<div class="bs-component">
+    <h2>Est-ce que je peux contribuer au développement du site et des applications?</h2>
+
+    <p>Bien sûr!</p>
+    <p></p>
+    <p>Si tu rencontres un problème sur le fonctionnement du site, n'hésite pas à créer un ticket pour m'informer du problème sur la <a href="https://github.com/hbuyse/VBTournaments/issues" target="_blank">page de développement</a> du site web.</p>
+    <p>Si tu connais BootStrap et que tu voies que tu peux améliorer le design du site, envoie-moi un <a href="mailto:tournaments.vb@gmail.com?subject=[BootStrap]">mail</a>.</p>
+    <p>Tu t'y connais en Python voire mieux en Django et si tu veux bosser sur ce site, même chose : un petit <a href="mailto:tournaments.vb@gmail.com?subject=[Django/Python]">mail</a></p>
+</div>
+
+<div class="bs-component">
+    <h2>Licences</h2>
+
+    <p>The MIT License (MIT)
+    <p>Copyright (c) 2015 Henri Buyse
+    <p>Tu peux trouver la licence complète sur la <a href="https://github.com/hbuyse/VBTournaments/blob/master/LICENCE" target="_blank">page de développement</a> du site</p>
+</div>
+
+
+{% endblock %}

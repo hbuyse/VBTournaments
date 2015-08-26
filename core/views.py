@@ -23,6 +23,10 @@ def home(request):
     return render(request, 'core/home.html')
 
 
+def about(request):
+    return render(request, 'core/about.html')
+
+
 class EventsListView(generic.ListView):
     template_name = 'core/events_list.html'
     context_object_name = 'events_list'
