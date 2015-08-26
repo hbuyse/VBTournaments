@@ -51,8 +51,6 @@ class VBUserProfile(models.Model):
                               blank=True)
     _share_mail = models.BooleanField(db_column='share_mail',
                                       default=True)
-    _share_phone = models.BooleanField(db_column='share_phone',
-                                       default=False)
 
     # Username on famous social networks
     _facebook = models.CharField(db_column='facebook',
