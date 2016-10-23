@@ -152,15 +152,6 @@ class VBUserProfile(models.Model):
 
 
     @property
-    def share_phone(self):
-        return self._share_phone
-
-    @share_phone.setter
-    def share_phone(self, val):
-        self._share_phone = val
-
-
-    @property
     def facebook(self):
         return self._facebook
 

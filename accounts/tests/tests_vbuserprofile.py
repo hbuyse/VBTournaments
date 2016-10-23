@@ -134,14 +134,6 @@ def test_get_share_mail():
     assert vbu.share_mail == True
 
 
-def test_get_share_phone():
-    vbu = VBUserProfile()
-
-    assert vbu.share_phone != None
-    assert vbu.share_phone != True
-    assert vbu.share_phone == False
-
-
 def test_get_facebook():
     vbu = VBUserProfile(facebook='jdoe')
 

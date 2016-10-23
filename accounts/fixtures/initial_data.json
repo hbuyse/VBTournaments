@@ -82,7 +82,6 @@
             "_user": 1,
             "_share_mail": true,
             "_key_expires": "2015-08-14T18:33:49.928Z",
-            "_share_phone": true,
             "_facebook": "hbuyse",
             "_phone": "+33679994286"
         }
@@ -98,7 +97,6 @@
             "_user": 3,
             "_share_mail": true,
             "_key_expires": "2015-08-14T18:33:11Z",
-            "_share_phone": false,
             "_facebook": "jydot",
             "_phone": ""
         }
@@ -114,7 +112,6 @@
             "_user": 2,
             "_share_mail": false,
             "_key_expires": "2015-08-14T18:34:33Z",
-            "_share_phone": true,
             "_facebook": "",
             "_phone": "+33000000000"
         }
@@ -130,7 +127,6 @@
             "_user": 4,
             "_share_mail": true,
             "_key_expires": "2015-08-14T18:34:33Z",
-            "_share_phone": false,
             "_facebook": "Toto",
             "_phone": ""
         }
